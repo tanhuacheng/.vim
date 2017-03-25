@@ -32,8 +32,10 @@
 "        https://github.com/vim-airline/vim-airline.git
 "    15) "vim-airline-clock" vim-airline clock extension - for people that easily loose the sense of
 "        time in fullscreen vim sessions, https://github.com/enricobacis/vim-airline-clock.git
-"    16) "vim-repeat" enable repeating supported plugin maps with "."
+"    16) "vim-repeat" enable repeating supported plugin maps with ".",
 "        https://github.com/tpope/vim-repeat.git
+"    17) "vim-indent-guides" visually displaying indent levels in code,
+"        https://github.com/nathanaelkane/vim-indent-guides.git
 
 set nocompatible
 
@@ -198,6 +200,11 @@ let g:airline_symbols.whitespace = ''
 " airline-clock
 let g:airline#extensions#clock#format = '%H:%M' " '%H:%M:%S'
 let g:airline#extensions#clock#updatetime = 1000
+
+" indent-guides
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
 
 
 " Source a private configuration file if available
