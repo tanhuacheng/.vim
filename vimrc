@@ -37,6 +37,7 @@
 "    17) "vim-indent-guides" visually displaying indent levels in code,
 "        https://github.com/nathanaelkane/vim-indent-guides.git
 "    18) "vim-paste-easy" Automatically set paste, https://github.com/roxma/vim-paste-easy.git
+"    19) "a.vim" Alternate Files quickly (.c --> .h etc), https://github.com/vim-scripts/a.vim.git
 
 set nocompatible
 
