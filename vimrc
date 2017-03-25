@@ -69,7 +69,6 @@ set textwidth=100
 set colorcolumn=+1 " highlight one column after 'textwidth'
 set number
 set foldmethod=syntax
-set foldcolumn=1
 set foldlevelstart=99
 
 " default settings
@@ -204,7 +203,7 @@ let g:airline#extensions#clock#updatetime = 1000
 " indent-guides
 if !has('gui_running')
     let g:indent_guides_auto_colors = 0
-    hi IndentGuidesOdd  ctermbg=234
+    hi IndentGuidesOdd  ctermbg=235
     hi IndentGuidesEven ctermbg=235
 endif
 let g:indent_guides_guide_size = 1
