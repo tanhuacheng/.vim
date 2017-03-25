@@ -169,6 +169,9 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 au InsertLeave * if pumvisible() == 0 | pclose | endif
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+nnoremap yi :YcmCompleter GoToInclude<CR>
+nnoremap yd :YcmCompleter GoToDeclaration<CR>
+nnoremap yD :YcmCompleter GoToDefinition<CR>
 
 " ultisnips
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
