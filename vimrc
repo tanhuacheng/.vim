@@ -36,6 +36,7 @@
 "        https://github.com/tpope/vim-repeat.git
 "    17) "vim-indent-guides" visually displaying indent levels in code,
 "        https://github.com/nathanaelkane/vim-indent-guides.git
+"    18) "vim-paste-easy" Automatically set paste, https://github.com/roxma/vim-paste-easy.git
 
 set nocompatible
 
