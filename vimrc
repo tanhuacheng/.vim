@@ -36,8 +36,7 @@
 "        https://github.com/tpope/vim-repeat.git
 "    17) "vim-indent-guides" visually displaying indent levels in code,
 "        https://github.com/nathanaelkane/vim-indent-guides.git
-"    18) "vim-paste-easy" Automatically set paste, https://github.com/roxma/vim-paste-easy.git
-"    19) "a.vim" Alternate Files quickly (.c --> .h etc), https://github.com/vim-scripts/a.vim.git
+"    18) "a.vim" Alternate Files quickly (.c --> .h etc), https://github.com/vim-scripts/a.vim.git
 
 set nocompatible
 
@@ -214,9 +213,6 @@ endif
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
-
-" paste-easy
-let g:paste_easy_enable = 0
 
 
 " Source a private configuration file if available
