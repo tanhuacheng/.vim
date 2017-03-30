@@ -37,6 +37,10 @@
 "    17) "vim-indent-guides" visually displaying indent levels in code,
 "        https://github.com/nathanaelkane/vim-indent-guides.git
 "    18) "a.vim" Alternate Files quickly (.c --> .h etc), https://github.com/vim-scripts/a.vim.git
+"    19) "vim-gitgutter" Shows a git diff in the gutter (sign column) and stages/undoes hunks
+"        https://github.com/airblade/vim-gitgutter.git
+"    20) "vim-signature" Toggle, display and navigate marks,
+"        https://github.com/kshenoy/vim-signature.git
 
 set nocompatible
 
@@ -121,7 +125,7 @@ noremap <silent> <C-F12> :!ctags --fields=+l -R .<CR>
 " plugins
 
 " nerdtree
-let NERDTreeShowLineNumbers = 1
+let NERDTreeShowLineNumbers = 0
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeWinSize = 28
 au vimenter * NERDTree | wincmd p
@@ -130,7 +134,7 @@ noremap <F5> :NERDTreeToggle<CR>
 
 " tagbar
 let g:tagbar_sort = 0
-let g:tagbar_show_linenumbers = 1
+let g:tagbar_show_linenumbers = 0
 let g:tagbar_width = 32
 au VimEnter * nested :call tagbar#autoopen(1)
 "au FileType * nested :call tagbar#autoopen(0)
@@ -206,13 +210,24 @@ let g:airline#extensions#clock#updatetime = 1000
 
 " indent-guides
 if !has('gui_running')
-    let g:indent_guides_auto_colors = 0
-    hi IndentGuidesOdd  ctermbg=235
-    hi IndentGuidesEven ctermbg=235
+  let g:indent_guides_auto_colors = 0
+  hi IndentGuidesOdd  ctermbg=235
+  hi IndentGuidesEven ctermbg=235
 endif
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
+
+" gitgutter
+nnoremap gn :GitGutterNextHunk<CR>
+nnoremap gp :GitGutterPrevHunk<CR>
+nnoremap gs :GitGutterStageHunk<CR>
+nnoremap gz :GitGutterUndoHunk<CR>
+nnoremap gP :GitGutterPreviewHunk<CR>
+nnoremap gc :pclose<CR>
+
+" signature
+let g:SignatureMarkTextHLDynamic = 1
 
 
 " Source a private configuration file if available
