@@ -41,6 +41,8 @@
 "        https://github.com/airblade/vim-gitgutter.git
 "    20) "vim-signature" Toggle, display and navigate marks,
 "        https://github.com/kshenoy/vim-signature.git
+"    21) "SearchComplete" Tab completion of words inside of a search ('/'),
+"        https://github.com/vim-scripts/SearchComplete.git
 
 set nocompatible
 
@@ -97,6 +99,9 @@ endif
 set hidden
 set completeopt=longest,menu
 set path=.,/usr/include,/usr/local/include
+
+set wildmode=longest:full,full
+set wildmenu
 
 map Q gq
 packadd matchit
