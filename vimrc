@@ -181,6 +181,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 nnoremap yi :YcmCompleter GoToInclude<CR>
 nnoremap yd :YcmCompleter GoToDeclaration<CR>
 nnoremap yD :YcmCompleter GoToDefinition<CR>
+nnoremap yf :YcmCompleter FixIt<CR>
 
 " ultisnips
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
