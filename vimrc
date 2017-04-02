@@ -41,6 +41,8 @@
 "        https://github.com/airblade/vim-gitgutter.git
 "    20) "vim-signature" Toggle, display and navigate marks,
 "        https://github.com/kshenoy/vim-signature.git
+"    21) "VisIncr" Produce increasing/decreasing columns of numbers, dates, or daynames,
+"        https://github.com/vim-scripts/VisIncr.git
 
 set nocompatible
 
