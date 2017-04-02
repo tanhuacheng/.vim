@@ -1,3 +1,8 @@
+在命令模式下输入一个数字 n 然后 i 进入插入模式编辑文本, ESC 后编辑的内容会重复 n 次.
+例如: 3i123 得到结果: 123123123
+
+vim +n file 打开文件并跳转到第 n 行(对于根据错误行号排查问题尤为方便)
+
 ;   Repeat latest f, t, F or T [count] times.
 ,   Repeat latest f, t, F or T in opposite direction [count] times
 
