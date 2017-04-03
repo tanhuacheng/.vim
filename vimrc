@@ -56,16 +56,12 @@ language message zh_CN.UTF-8
 set termencoding=utf-8 " If appears messy code, change this to your terminal encoding
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
 
-if has("syntax")
-  syntax on
-endif
+syntax on
 
 " Jump to the last position when reopening a file
 " Load indentation rules and plugins according to the detected filetype
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  filetype plugin indent on
-endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+filetype plugin indent on
 
 set t_Co=256
 colorscheme molokai
@@ -78,7 +74,6 @@ set number
 set foldmethod=syntax
 set foldlevelstart=99
 
-" default settings
 set backspace=indent,eol,start
 set autoindent
 set autowrite
@@ -90,12 +85,9 @@ set showmatch
 set ignorecase
 set smartcase " when search terms contain capital char, then do noignorecase
 set incsearch
-if has("syntax")
-  set hlsearch
-endif
-if has('mouse')
-  set mouse=a
-endif
+set hlsearch
+set mouse=a
+set mousehide
 set hidden
 set completeopt=longest,menu
 set path=.,/usr/include,/usr/local/include
@@ -106,7 +98,6 @@ set wildmenu
 map Q gq
 packadd matchit
 
-" tab
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -130,26 +121,24 @@ noremap <silent> <C-F12> :!ctags --fields=+l -R .<CR>
 " plugins
 
 " nerdtree
-let NERDTreeShowLineNumbers = 0
-let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeWinSize = 28
-au vimenter * NERDTree | wincmd p
+let NERDTreeAutoDeleteBuffer = 1
+au vimenter * if !argc() | NERDTree | wincmd p | endif
 au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 noremap <F5> :NERDTreeToggle<CR>
 
 " tagbar
-let g:tagbar_sort = 0
-let g:tagbar_show_linenumbers = 0
 let g:tagbar_width = 32
-au VimEnter * nested :call tagbar#autoopen(1)
-"au FileType * nested :call tagbar#autoopen(0)
+let g:tagbar_sort = 0
+au VimEnter * nested :call tagbar#autoopen(0)
+au FileType * nested :call tagbar#autoopen(0)
 noremap <F8> :TagbarToggle<CR>
 
 " undotree
 let g:undotree_WindowLayout = 2
 let g:undotree_SplitWidth = 20
-let g:undotree_HighlightChangedText = 0
 let g:undotree_DiffAutoOpen = 0
+let g:undotree_HighlightChangedText = 0
 noremap <F6> :UndotreeToggle<CR>
 
 " youcompleteme
