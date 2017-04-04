@@ -87,7 +87,6 @@ set ignorecase
 set smartcase " when search terms contain capital char, then do noignorecase
 set incsearch
 set hlsearch
-set mouse=a
 set mousehide
 set hidden
 set completeopt=longest,menu
