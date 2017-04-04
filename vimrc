@@ -43,6 +43,7 @@
 "        https://github.com/kshenoy/vim-signature.git
 "    21) "VisIncr" Produce increasing/decreasing columns of numbers, dates, or daynames,
 "        https://github.com/vim-scripts/VisIncr.git
+"    22) "vimwiki" Personal Wiki for Vim, https://github.com/vimwiki/vimwiki.git
 
 set nocompatible
 
