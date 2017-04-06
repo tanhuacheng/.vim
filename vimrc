@@ -57,7 +57,7 @@ language message zh_CN.UTF-8
 set termencoding=utf-8 " If appears messy code, change this to your terminal encoding
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
 
-syntax on
+syntax enable
 
 " Jump to the last position when reopening a file
 " Load indentation rules and plugins according to the detected filetype
@@ -125,7 +125,7 @@ noremap <silent> <C-F12> :!ctags --fields=+l -R .<CR>
 " nerdtree
 let NERDTreeWinSize = 28
 let NERDTreeAutoDeleteBuffer = 1
-au vimenter * if !argc() | NERDTree | wincmd p | endif
+au vimenter * NERDTree | wincmd p
 au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 noremap <F5> :NERDTreeToggle<CR>
 
