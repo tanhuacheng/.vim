@@ -225,6 +225,12 @@ nnoremap gc :pclose<CR>
 let g:SignatureMarkTextHLDynamic = 1
 
 
+" functions
+function! Youdao()
+  echo system("~/.vim/youdao.py " . expand("<cword>"))
+endfun
+nnoremap gy :call Youdao()<CR>
+
 " Source a private configuration file if available
 if filereadable(".vimrc.private")
   source .vimrc.private
