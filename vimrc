@@ -119,6 +119,8 @@ noremap <silent> <C-l> <C-w>l
 
 noremap <silent> <C-F12> :!ctags --fields=+l -R .<CR>
 
+nnoremap zT zt5<C-y>
+
 
 " plugins
 
@@ -131,7 +133,10 @@ noremap <F5> :NERDTreeToggle<CR>
 
 " tagbar
 let g:tagbar_width = 32
+let g:tagbar_zoomwidth = 0
 let g:tagbar_sort = 0
+let g:tagbar_foldlevel = 1
+let g:tagbar_iconchars = ['▸', '▾']
 au VimEnter * nested :call tagbar#autoopen(0)
 noremap <F8> :TagbarToggle<CR>
 
