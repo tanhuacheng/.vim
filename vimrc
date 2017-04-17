@@ -102,6 +102,7 @@ set hidden
 set history=400
 set path=.,/usr/include,/usr/local/include
 set updatetime=2000
+set splitright
 
 " cscope
 if has("cscope")
@@ -117,6 +118,8 @@ if has("cscope")
     set cscopeverbose               " show msg when any other cscope db added
     set csqf=s-,d-,c-,t-,e-,i-      " use quickfix window to show cscope results
 endif
+
+let mapleader = "`"
 
 
 " plugins
