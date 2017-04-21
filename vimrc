@@ -234,6 +234,8 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
+nmap Y y$
+
 nmap <silent> <C-n> :bn<CR>
 nmap <silent> <C-p> :bp<CR>
 
