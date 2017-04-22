@@ -5,6 +5,11 @@ function usage {
     echo "Usage: capmap <enter <key>|exit>"
 }
 
+# my Caps_Lock's keycode is 66, use "xev" to detect yours, like this:
+# 1. xev | ag Caps_Lock
+# 2. type Caps_Lock key
+KEYCODE=66
+
 TMPFILE="$(echo ~)/.vim/.capmap.tmp"
 touch $TMPFILE
 
@@ -19,7 +24,7 @@ if [ "$1" = "enter" ]; then
     fi
 
     if [ "$count" -eq 0 ]; then
-        xmodmap -e "remove Lock = Caps_Lock" -e "keycode 66 = $2"
+        xmodmap -e "remove Lock = Caps_Lock" -e "keycode $KEYCODE = $2"
     fi
 
     echo $(echo "$count+1" | bc) > $TMPFILE

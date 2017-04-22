@@ -227,8 +227,7 @@ let g:NERDDefaultAlign = 'left'
 
 " maps
 
-" use "Caps_Lock" key as "`"
-" my Caps_Lock's keycode is 66(use "xev" to detect yours), ascii character "`" is 96
+" use "Caps_Lock" key as "`", ascii character "`" is 96
 " type "`" twice in Normal mode to toggle Caps_Lock state, this is done by "xdotool"
 " it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
