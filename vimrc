@@ -119,8 +119,6 @@ if has("cscope")
     set csqf=s-,d-,c-,t-,e-,i-      " use quickfix window to show cscope results
 endif
 
-let mapleader = "`"
-
 
 " plugins
 
@@ -220,6 +218,17 @@ let g:vimwiki_folding = 'list'
 
 
 " maps
+
+" use "Caps_Lock" key as "`"
+" my Caps_Lock's keycode is 66(use "xev" to detect yours), ascii character "`" is 96
+" type "`" twice in Normal mode to toggle Caps_Lock state, this is done by "xdotool"
+" it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
+au VimEnter * echo system('xmodmap -e "remove Lock = Caps_Lock" -e "keycode 66 = 96"')
+au VimLeave * echo system('xmodmap -e "keycode 66 = Caps_Lock" -e "add Lock = Caps_Lock"')
+nmap <silent> `` :echo system("xdotool key Caps_Lock")<CR>
+
+" "`" is not "'"
+let mapleader = "`"
 
 " the "Q" command starts Ex mode, but you will not need it
 map Q gq
