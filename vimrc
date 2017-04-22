@@ -42,6 +42,8 @@
 " 23) "vimwiki" Personal Wiki for Vim, https://github.com/vimwiki/vimwiki.git
 " 24) "vim-gitwildignore" Append files listed in .gitignore into wildignore,
 "     https://github.com/mikewadsten/vim-gitwildignore.git
+" 25) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
+"     https://github.com/scrooloose/nerdcommenter.git
 
 
 set nocompatible
@@ -215,6 +217,12 @@ let g:SignatureMarkTextHLDynamic = 1
 
 " vimwiki
 let g:vimwiki_folding = 'list'
+
+" nerdcommenter
+let g:NERDCommentEmptyLines = 1
+let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDDefaultAlign = 'left'
 
 
 " maps
