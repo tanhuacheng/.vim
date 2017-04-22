@@ -82,7 +82,12 @@ def translate ():
                    'version=1.1&',
                    'q={}'.format(key_word)])
 
-    req = requests.get(url, verify = False);
+    try:
+        req = requests.get(url, verify = False, timeout = 3)
+    except:
+        print('请求超时')
+        return
+
     if req.text[0] != '{':
         print(req.text)
         return
