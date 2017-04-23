@@ -1,9 +1,26 @@
 #! /bin/bash
 # map Caps_Lock to <key> reenterable
 
+# capmap should not be called from remote, such as ssh login
+isremote=$(who am i | ag '\(([0-9]{1,3}\.){3}[0-9]{1,3}\)')
+if [ -n "$isremote" ]; then
+    exit
+fi
+
 function usage {
-    echo "Usage: capmap <enter <key>|exit>"
+    echo "Usage: capmap <enter <key>|exit|toggle>"
 }
+
+# toggle Caps_Lock state, use "xdotool", please install it before you can use this option
+if [ "$1" = "toggle" ]; then
+    if [ -n "$2" ]; then
+        usage; exit
+    fi
+
+    xdotool key Caps_Lock
+
+    exit
+fi
 
 # my Caps_Lock's keycode is 66, use "xev" to detect yours, like this:
 # 1. xev | ag Caps_Lock
@@ -41,6 +58,7 @@ elif [ "$1" = "exit" ]; then
     if [ "$count" -eq 1 ]; then
         xmodmap -e "keycode 66 = Caps_Lock" -e "add Lock = Caps_Lock"
     fi
+
 else
     usage
 fi

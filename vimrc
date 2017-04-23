@@ -237,11 +237,12 @@ iabbrev ture true
 " maps
 
 " use "Caps_Lock" key as "`", ascii character "`" is 96
-" type "`" twice in Normal mode to toggle Caps_Lock state, this is done by "xdotool"
+" type "Caps_Lock" or "`" twice in Normal mode to toggle Caps_Lock state
 " it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
+" NOTE: this is only work for local login user(s)
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
 au VimLeave * echo system("~/.vim/capmap.sh exit")
-nmap <silent> `` :echo system("xdotool key Caps_Lock")<CR>
+nmap <silent> `` :echo system("~/.vim/capmap.sh toggle")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
