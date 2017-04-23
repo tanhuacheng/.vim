@@ -67,6 +67,7 @@ filetype plugin indent on
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " UI
+set t_Co=256
 colorscheme molokai
 set laststatus=2
 set cursorline
