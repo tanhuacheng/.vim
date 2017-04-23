@@ -224,6 +224,15 @@ let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 
+" delimitMate
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_balance_matchpairs = 1
+
+
+" iabbrevs
+iabbrev ture true
+
 
 " maps
 
@@ -244,6 +253,8 @@ imap <C-h> <Backspace>
 imap <C-l> <Delete>
 imap <C-j> <Left>
 imap <C-k> <Right>
+
+imap <expr> <CR> pumvisible() ? "\<C-Y>" : "<Plug>delimitMateCR"
 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
