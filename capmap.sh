@@ -2,7 +2,7 @@
 # map Caps_Lock to <key> reenterable
 
 # capmap should not be called from remote, such as ssh login
-isremote=$(who am i | ag '\(([0-9]{1,3}\.){3}[0-9]{1,3}\)')
+isremote=$(who | ag $(whoami) | ag '\(([0-9]{1,3}\.){3}[0-9]{1,3}\)')
 if [ -n "$isremote" ]; then
     exit
 fi
