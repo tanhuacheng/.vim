@@ -28,8 +28,8 @@ fi
 KEYCODE=66
 
 TMPFILE="$(echo ~)/.vim/.capmap.tmp"
-touch $TMPFILE
 
+(flock 9
 count=$(cat "$TMPFILE")
 if [ -z "$count" ]; then
     count=0
@@ -62,5 +62,6 @@ elif [ "$1" = "exit" ]; then
 else
     usage
 fi
+) 9>>$TMPFILE
 
 exit
