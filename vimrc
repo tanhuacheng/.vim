@@ -129,7 +129,7 @@ endif
 packadd matchit
 
 " ctrlp
-let g:ctrlp_map ='<C-@><C-p>'
+let g:ctrlp_map ='<Space><C-p>'
 
 " nerdtree
 let NERDTreeWinSize = 28
