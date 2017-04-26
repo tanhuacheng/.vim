@@ -131,7 +131,7 @@ endif
 packadd matchit
 
 " ctrlp
-let g:ctrlp_map ='<Space><C-p>'
+let g:ctrlp_map ='<C-@><C-p>'
 
 " nerdtree & tagbar
 let g:NERDTreeWinSize = 28
