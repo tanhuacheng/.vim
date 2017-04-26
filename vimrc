@@ -133,19 +133,40 @@ packadd matchit
 " ctrlp
 let g:ctrlp_map ='<Space><C-p>'
 
+" nerdtree & tagbar
+let g:NERDTreeWinSize = 28
+let g:tagbar_width = 32
+
+let s:win_reserved = 7
+let s:nerdtree_open = 0
+let s:tagbar_open = 0
+
+if ((&textwidth + s:win_reserved + g:NERDTreeWinSize + 1) <= winwidth(0))
+    let s:nerdtree_open = 1
+    if ((&textwidth + s:win_reserved + g:NERDTreeWinSize + 1 + g:tagbar_width + 1) <= winwidth(0))
+        let s:tagbar_open = 1
+    endif
+else
+    if ((&textwidth + s:win_reserved + g:tagbar_width + 1) <= winwidth(0))
+        let s:tagbar_open = 1
+    endif
+endif
+
 " nerdtree
-let NERDTreeWinSize = 28
-let NERDTreeAutoDeleteBuffer = 1
-au vimenter * NERDTree | wincmd p
+let g:NERDTreeAutoDeleteBuffer = 1
+if (s:nerdtree_open && !&diff)
+    au vimenter * NERDTree | wincmd p
+endif
 au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " tagbar
-let g:tagbar_width = 32
 let g:tagbar_zoomwidth = 0
 let g:tagbar_sort = 0
 let g:tagbar_foldlevel = 1
 let g:tagbar_iconchars = ['▸', '▾']
-au VimEnter * nested :call tagbar#autoopen(0)
+if (s:tagbar_open && !&diff)
+    au VimEnter * nested :call tagbar#autoopen(0)
+endif
 
 " undotree
 let g:undotree_WindowLayout = 2
