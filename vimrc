@@ -44,6 +44,7 @@
 "     https://github.com/mikewadsten/vim-gitwildignore.git
 " 25) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
 "     https://github.com/scrooloose/nerdcommenter.git
+" 26) "vim-easymotion" Vim motions on speed!, https://github.com/easymotion/vim-easymotion.git
 
 
 set nocompatible
@@ -266,7 +267,7 @@ iabbrev ture true
 " NOTE: this is only work for local login user(s)
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
 au VimLeave * echo system("~/.vim/capmap.sh exit")
-nmap <silent> `` :echo system("~/.vim/capmap.sh toggle")<CR>
+nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
