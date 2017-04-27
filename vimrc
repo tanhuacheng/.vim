@@ -289,8 +289,22 @@ nmap <leader><C-x> <C-w>x
 
 nmap Y y$
 
-nmap <silent> <C-n> :bn<CR>
-nmap <silent> <C-p> :bp<CR>
+let g:switch_buffer_blacklist = {
+    \ 'nerdtree' : 1,
+    \ 'undotree' : 1,
+    \}
+function! SwitchBuffer(dir)
+    if (get(g:switch_buffer_blacklist, &filetype))
+        return
+    endif
+    if (!a:dir)
+        bn
+    else
+        bp
+    endif
+endfunc
+nmap <silent> <C-n> :call SwitchBuffer(0)<CR>
+nmap <silent> <C-p> :call SwitchBuffer(1)<CR>
 
 nmap <silent> <C-F12> :echo "'ctags --fields=+l -R .' " . system("ctags --fields=+l -R .")<CR>
 nmap <silent> <S-F12> :echo "'cscope -Rbq' " . system("cscope -Rbq")<CR>
