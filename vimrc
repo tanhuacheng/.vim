@@ -350,6 +350,9 @@ nmap <silent> <Space>p :cp<CR>
 nmap <silent> <Space>o :botright copen<CR>
 nmap <silent> <Space><Space> :ccl<CR>
 
+" easymotion map
+map <silent> <leader><leader>. <Plug>(easymotion-repeat)
+
 
 " Source a private configuration file if available
 if filereadable(".vimrc.private")
