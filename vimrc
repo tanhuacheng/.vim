@@ -5,7 +5,7 @@
 "
 " plugins
 " 1) "pathogen" manage your 'runtimepath' with ease, https://github.com/tpope/vim-pathogen.git
-" 2) "vimogen" Vim Plugin Manager, https://github.com/rkulla/vimogen
+" 2) "vimogen" Vim Plugin Manager, https://github.com/rkulla/vimogen.git
 " 3) "molokai" color scheme for vim, https://github.com/tomasr/molokai.git
 " 4) "nerdtree" a tree explorer plugin for vim, https://github.com/scrooloose/nerdtree.git
 " 5) "nerdtree-git-plugin" A plugin of NERDTree showing git status flags,
@@ -262,7 +262,7 @@ iabbrev ture true
 " maps
 
 " use "Caps_Lock" key as "`", ascii character "`" is 96
-" type "Caps_Lock" or "`" twice in Normal mode to toggle Caps_Lock state
+" type "Caps_Lock" or "`" then "Space" in Normal mode to toggle Caps_Lock state
 " it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
 " NOTE: this is only work for local login user(s)
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")

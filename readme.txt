@@ -5,7 +5,7 @@
 2. cd .vim && mkdir bundle
 
 3. cd bundle/
-   git clone https://github.com/rkulla/vimogen
+   git clone https://github.com/rkulla/vimogen.git
 
 4. ln -s ~/.vim/bundle/vimogen/vimogen ~/bin/vimogen
    ln -s ~/.vim/vimogen_repos ~/.vimogen_repos
