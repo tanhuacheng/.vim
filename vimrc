@@ -17,34 +17,28 @@
 " 9) "vim-surround" quoting/parenthesizing made simple, https://github.com/tpope/vim-surround.git
 " 10) "delimitMate" provides automatic closing of quotes, parenthesis, brackets, etc.
 "     https://github.com/Raimondi/delimitMate.git
-" 11) "youcompleteme" A code-completion engine for Vim,
-"     https://github.com/Valloric/YouCompleteMe.git
-" 12) "ultisnips" ultimate solution for snippets in Vim. It has tons of features and is very fast,
-"     https://github.com/SirVer/ultisnips.git
-" 13) "vim-snippets" snippets files for various programming languages,
-"     https://github.com/honza/vim-snippets.git
-" 14) "vim-fugitive" a Git wrapper so awesome, https://github.com/tpope/vim-fugitive.git
-" 15) "vim-airline" lean & mean status/tabline for vim that's light as air,
+" 11) "vim-fugitive" a Git wrapper so awesome, https://github.com/tpope/vim-fugitive.git
+" 12) "vim-airline" lean & mean status/tabline for vim that's light as air,
 "     https://github.com/vim-airline/vim-airline.git
-" 16) "vim-airline-clock" vim-airline clock extension - for people that easily loose the sense of
+" 13) "vim-airline-clock" vim-airline clock extension - for people that easily loose the sense of
 "     time in fullscreen vim sessions, https://github.com/enricobacis/vim-airline-clock.git
-" 17) "vim-repeat" enable repeating supported plugin maps with ".",
+" 14) "vim-repeat" enable repeating supported plugin maps with ".",
 "     https://github.com/tpope/vim-repeat.git
-" 18) "vim-indent-guides" visually displaying indent levels in code,
+" 15) "vim-indent-guides" visually displaying indent levels in code,
 "     https://github.com/nathanaelkane/vim-indent-guides.git
-" 19) "a.vim" Alternate Files quickly (.c --> .h etc), https://github.com/vim-scripts/a.vim.git
-" 20) "vim-gitgutter" Shows a git diff in the gutter (sign column) and stages/undoes hunks
+" 16) "a.vim" Alternate Files quickly (.c --> .h etc), https://github.com/vim-scripts/a.vim.git
+" 17) "vim-gitgutter" Shows a git diff in the gutter (sign column) and stages/undoes hunks
 "     https://github.com/airblade/vim-gitgutter.git
-" 21) "vim-signature" Toggle, display and navigate marks,
+" 18) "vim-signature" Toggle, display and navigate marks,
 "     https://github.com/kshenoy/vim-signature.git
-" 22) "VisIncr" Produce increasing/decreasing columns of numbers, dates, or daynames,
+" 19) "VisIncr" Produce increasing/decreasing columns of numbers, dates, or daynames,
 "     https://github.com/vim-scripts/VisIncr.git
-" 23) "vimwiki" Personal Wiki for Vim, https://github.com/vimwiki/vimwiki.git
-" 24) "vim-gitwildignore" Append files listed in .gitignore into wildignore,
+" 20) "vimwiki" Personal Wiki for Vim, https://github.com/vimwiki/vimwiki.git
+" 21) "vim-gitwildignore" Append files listed in .gitignore into wildignore,
 "     https://github.com/mikewadsten/vim-gitwildignore.git
-" 25) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
+" 22) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
 "     https://github.com/scrooloose/nerdcommenter.git
-" 26) "vim-easymotion" Vim motions on speed!, https://github.com/easymotion/vim-easymotion.git
+" 23) "vim-easymotion" Vim motions on speed!, https://github.com/easymotion/vim-easymotion.git
 
 
 set nocompatible
@@ -106,7 +100,6 @@ set autowrite
 set nobackup
 set hidden
 set history=400
-set path=.,/usr/include,/usr/local/include
 set updatetime=2000
 set splitright
 
@@ -164,7 +157,7 @@ au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree
 let g:tagbar_zoomwidth = 0
 let g:tagbar_sort = 0
 let g:tagbar_foldlevel = 1
-let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_iconchars = ['+', '-']
 if (s:tagbar_open && !&diff)
     au VimEnter * nested :call tagbar#autoopen(0)
 endif
@@ -175,36 +168,6 @@ let g:undotree_SplitWidth = 20
 let g:undotree_DiffAutoOpen = 0
 let g:undotree_HighlightChangedText = 0
 
-" youcompleteme
-let g:ycm_filetype_blacklist = {
-    \ 'nerdtree' : 1,
-    \ 'undotree' : 1,
-    \ 'tagbar' : 1,
-    \ 'qf' : 1,
-    \ 'notes' : 1,
-    \ 'markdown' : 1,
-    \ 'unite' : 1,
-    \ 'vimwiki' : 1,
-    \ 'pandoc' : 1,
-    \ 'infolog' : 1,
-    \ 'mail' : 1
-    \}
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1 " Ctags needs to be called with the --fields=+l
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-
-" ultisnips
-let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
-let g:UltiSnipsExpandTrigger = "<TAB>"
-let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
-
 " airline
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
@@ -212,15 +175,11 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.maxlinenr = 'Ξ'
-let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = ''
 
 " airline-clock
@@ -260,14 +219,6 @@ iabbrev ture true
 
 
 " maps
-
-" use "Caps_Lock" key as "`", ascii character "`" is 96
-" type "Caps_Lock" or "`" twice in Normal mode to toggle Caps_Lock state
-" it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
-" NOTE: this is only work for local login user(s)
-au VimEnter * echo system("~/.vim/capmap.sh enter 96")
-au VimLeave * echo system("~/.vim/capmap.sh exit")
-nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
@@ -314,18 +265,12 @@ nmap <silent> <F5> :NERDTreeToggle<CR>
 nmap <silent> <F6> :UndotreeToggle<CR>
 nmap <silent> <F8> :TagbarToggle<CR>
 
-nmap <silent> yi :YcmCompleter GoToInclude<CR>
-nmap <silent> yd :YcmCompleter GoToDeclaration<CR>
-nmap <silent> yD :YcmCompleter GoToDefinition<CR>
-nmap <silent> yf :YcmCompleter FixIt<CR>
-
 nmap <silent> gn :GitGutterNextHunk<CR>
 nmap <silent> gp :GitGutterPrevHunk<CR>
 nmap <silent> gs :GitGutterStageHunk<CR>
 nmap <silent> gz :GitGutterUndoHunk<CR>
 nmap <silent> gP :GitGutterPreviewHunk<CR>
 
-nmap <silent> gy :echo system("~/.vim/youdao.py " . expand("<cword>"))<CR>
 nmap <silent> gc :pclose<CR>
 
 " "s" Find this C symbol
