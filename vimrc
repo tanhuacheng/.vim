@@ -125,6 +125,11 @@ if has("cscope")
     set csqf=s-,d-,c-,t-,e-,i-      " use quickfix window to show cscope results
 endif
 
+" set filetype c to cpp
+" avoid the annoyed highlight for c99 compound literal: foo(&(char){0}), the '{' is highlighted red
+" TODO: the following au should be delete if anyone find a ideal solution
+au BufRead,BufNewFile *.c set filetype=cpp
+
 
 " plugins
 
