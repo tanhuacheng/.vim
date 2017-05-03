@@ -107,7 +107,7 @@ set nobackup
 set hidden
 set history=400
 set path=.,/usr/include,/usr/local/include
-set updatetime=2000
+set updatetime=1000
 set splitright
 
 " cscope
