@@ -273,6 +273,7 @@ iabbrev ture true
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
 au VimLeave * echo system("~/.vim/capmap.sh exit")
 nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
+nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh exit && ~/.vim/capmap.sh enter 96")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
