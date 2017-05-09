@@ -65,7 +65,7 @@ filetype plugin indent on
 
 " Jump to the last position when reopening a file
 " Load indentation rules and plugins according to the detected filetype
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " UI
 set t_Co=256
