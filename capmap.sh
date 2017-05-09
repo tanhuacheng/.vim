@@ -1,6 +1,9 @@
 #! /bin/bash
 # map Caps_Lock to <key> reenterable
 
+TMPFILE="$(echo ~)/.vim/.capmap.tmp"
+
+(flock 9
 # capmap should not be called from remote, such as ssh login
 isremote=$(who | ag $(whoami) | ag '\(([0-9]{1,3}\.){3}[0-9]{1,3}\)')
 if [ -n "$isremote" ]; then
@@ -8,7 +11,7 @@ if [ -n "$isremote" ]; then
 fi
 
 function usage {
-    echo "Usage: capmap <enter <key>|exit|toggle>"
+    echo "Usage: capmap <enter <key>|restart <key>|exit|toggle>"
 }
 
 # toggle Caps_Lock state, use "xdotool", please install it before you can use this option
@@ -27,9 +30,16 @@ fi
 # 2. type Caps_Lock key
 KEYCODE=66
 
-TMPFILE="$(echo ~)/.vim/.capmap.tmp"
+if [ "$1" = "restart" ]; then
+    if [ -z "$2" ]; then
+        usage; exit
+    fi
 
-(flock 9
+    xmodmap -e "remove Lock = Caps_Lock" -e "keycode $KEYCODE = $2" 2>&1 >/dev/null | grep nonthing
+
+    exit
+fi
+
 count=$(cat "$TMPFILE")
 if [ -z "$count" ]; then
     count=0
@@ -56,7 +66,7 @@ elif [ "$1" = "exit" ]; then
     fi
 
     if [ "$count" -eq 1 ]; then
-        xmodmap -e "keycode 66 = Caps_Lock" -e "add Lock = Caps_Lock"
+        xmodmap -e "keycode $KEYCODE = Caps_Lock" -e "add Lock = Caps_Lock"
     fi
 
 else

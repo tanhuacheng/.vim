@@ -130,6 +130,37 @@ endif
 " TODO: the following au should be delete if anyone find a ideal solution
 au BufRead,BufNewFile *.c set filetype=cpp
 
+" remember line position relative to the window
+function! SaveLine()
+    if !exists("b:last_line") || 0 == b:last_line
+        let b:last_line = winline()
+        let s:last_time = &updatetime
+        let &updatetime = 0
+        augroup StickyLine
+            au! CursorHold * call LoadLine()
+        augroup END
+    endif
+endfunction
+
+function! LoadLine()
+    if exists("b:last_line") && b:last_line > 0
+        au! StickyLine
+        let &updatetime = s:last_time
+        if b:last_line > winheight(0)
+            let b:last_line = winheight(0)
+        endif
+        let offset = winline() - b:last_line
+        if (offset > 0)
+            exe "normal " . offset . "\<C-E>"
+        elseif (offset < 0)
+            exe "normal " . -offset . "\<C-Y>"
+        endif
+        let b:last_line = 0
+    endif
+endfunction
+
+au BufLeave * call SaveLine()
+
 
 " plugins
 
@@ -273,7 +304,7 @@ iabbrev ture true
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
 au VimLeave * echo system("~/.vim/capmap.sh exit")
 nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
-nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh exit && ~/.vim/capmap.sh enter 96")<CR>
+nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh restart 96")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
