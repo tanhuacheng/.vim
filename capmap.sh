@@ -35,7 +35,7 @@ if [ "$1" = "restart" ]; then
         usage; exit
     fi
 
-    xmodmap -e "remove Lock = Caps_Lock" -e "keycode $KEYCODE = $2" 2>&1 >/dev/null | grep nonthing
+    xmodmap -e "remove Lock = Caps_Lock" -e "keycode $KEYCODE = $2" 2>&1 >/dev/null | grep nothing
 
     exit
 fi
