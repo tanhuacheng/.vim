@@ -134,7 +134,9 @@ au BufRead,BufNewFile *.c set filetype=cpp
 function! SaveLine()
     if !exists("b:last_line") || 0 == b:last_line
         let b:last_line = winline()
-        let s:last_time = &updatetime
+        if !exists("s:last_time") || &updatetime > 0
+            let s:last_time = &updatetime
+        endif
         let &updatetime = 0
         augroup StickyLine
             au! CursorHold * call LoadLine()
@@ -143,9 +145,9 @@ function! SaveLine()
 endfunction
 
 function! LoadLine()
+    au! StickyLine
+    let &updatetime = s:last_time
     if exists("b:last_line") && b:last_line > 0
-        au! StickyLine
-        let &updatetime = s:last_time
         if b:last_line > winheight(0)
             let b:last_line = winheight(0)
         endif
