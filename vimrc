@@ -70,8 +70,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " UI
 set t_Co=256
 colorscheme molokai
-hi Normal     ctermfg=250
-hi LineNr     ctermfg=248
+hi Normal ctermfg=250
+hi LineNr ctermfg=248
 hi CursorLine cterm=bold
 set laststatus=2
 set cursorline
@@ -130,38 +130,30 @@ endif
 " TODO: the following au should be delete if anyone find a ideal solution
 au BufRead,BufNewFile *.c set filetype=cpp
 
-" remember line position relative to the window
-function! SaveLine()
-    if !exists("b:last_line") || 0 == b:last_line
-        let b:last_line = winline()
-        if !exists("s:last_time") || &updatetime > 0
-            let s:last_time = &updatetime
+" Save current view settings on a per-window, per-buffer basis.
+function! AutoSaveWinView()
+    if !exists("w:SavedBufView")
+        let w:SavedBufView = {}
+    endif
+    let w:SavedBufView[bufnr("%")] = winsaveview()
+endfunction
+
+" Restore current view settings.
+function! AutoRestoreWinView()
+    let buf = bufnr("%")
+    if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+        let v = winsaveview()
+        let atStartOfFile = v.lnum == 1 && v.col == 0
+        if atStartOfFile && !&diff
+            call winrestview(w:SavedBufView[buf])
         endif
-        let &updatetime = 0
-        augroup StickyLine
-            au! CursorHold * call LoadLine()
-        augroup END
+        unlet w:SavedBufView[buf]
     endif
 endfunction
 
-function! LoadLine()
-    au! StickyLine
-    let &updatetime = s:last_time
-    if exists("b:last_line") && b:last_line > 0
-        if b:last_line > winheight(0)
-            let b:last_line = winheight(0)
-        endif
-        let offset = winline() - b:last_line
-        if (offset > 0)
-            exe "normal " . offset . "\<C-E>"
-        elseif (offset < 0)
-            exe "normal " . -offset . "\<C-Y>"
-        endif
-        let b:last_line = 0
-    endif
-endfunction
-
-au BufLeave * call SaveLine()
+" When switching buffers, preserve window view.
+au BufLeave * call AutoSaveWinView()
+au BufEnter * call AutoRestoreWinView()
 
 
 " plugins
@@ -244,19 +236,20 @@ let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " airline
-let g:airline_theme='dark'
+let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#ycm#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '▶ '
-let g:airline_left_alt_sep = '〉'
-let g:airline_right_sep = '◀ '
-let g:airline_right_alt_sep = '〈'
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '﹥'
+let g:airline_right_sep = '◂'
+let g:airline_right_alt_sep = 'ᚲ'
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '∑'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
@@ -266,7 +259,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " airline-clock
 let g:airline#extensions#clock#format = '%H:%M'
-let g:airline#extensions#clock#updatetime = 99999999999
+let g:airline#extensions#clock#updatetime = 2147483647
 
 " indent-guides
 if !has('gui_running')
