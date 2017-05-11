@@ -323,12 +323,6 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <leader><C-x> <C-w>x
 
-" In insertmode, type Ctrl+v then Alt+? to see what exactly key code of <M-?> is
-set <M-j>=j
-set <M-k>=k
-nmap <M-j> }
-nmap <M-k> {
-
 nmap Y y$
 
 let g:switch_buffer_blacklist = {
