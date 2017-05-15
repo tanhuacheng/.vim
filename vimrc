@@ -39,12 +39,11 @@
 "     https://github.com/kshenoy/vim-signature.git
 " 22) "VisIncr" Produce increasing/decreasing columns of numbers, dates, or daynames,
 "     https://github.com/vim-scripts/VisIncr.git
-" 23) "vimwiki" Personal Wiki for Vim, https://github.com/vimwiki/vimwiki.git
-" 24) "vim-gitwildignore" Append files listed in .gitignore into wildignore,
+" 23) "vim-gitwildignore" Append files listed in .gitignore into wildignore,
 "     https://github.com/mikewadsten/vim-gitwildignore.git
-" 25) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
+" 24) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
 "     https://github.com/scrooloose/nerdcommenter.git
-" 26) "vim-easymotion" Vim motions on speed!, https://github.com/easymotion/vim-easymotion.git
+" 25) "vim-easymotion" Vim motions on speed!, https://github.com/easymotion/vim-easymotion.git
 
 
 set nocompatible
@@ -270,12 +269,10 @@ endif
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar', 'markdown']
 
 " signature
 let g:SignatureMarkTextHLDynamic = 1
-
-" vimwiki
-let g:vimwiki_folding = 'list'
 
 " nerdcommenter
 let g:NERDCommentEmptyLines = 1
