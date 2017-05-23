@@ -236,16 +236,24 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " airline
 let g:airline_theme = 'dark'
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s '
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '░'
+
 let g:airline#extensions#ycm#enabled = 1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
+
 let g:airline_left_sep = '▶'
 let g:airline_left_alt_sep = '﹥'
 let g:airline_right_sep = '◂'
 let g:airline_right_alt_sep = 'ᚲ'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
 let g:airline_symbols.crypt = '🔒'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '∑'
