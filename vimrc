@@ -309,8 +309,6 @@ map Q gq
 
 imap <C-h> <Backspace>
 imap <C-l> <Delete>
-imap <C-j> <Left>
-imap <C-k> <Right>
 
 imap <expr> <CR> pumvisible() ? "\<C-Y>" : "<Plug>delimitMateCR"
 
