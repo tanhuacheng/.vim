@@ -52,6 +52,9 @@ set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+syntax enable
+filetype plugin indent on
+
 " coding
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
@@ -59,8 +62,9 @@ language message zh_CN.UTF-8
 set termencoding=utf-8 " If appears messy code, change this to your terminal encoding
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
 
-syntax enable
-filetype plugin indent on
+" Prevent that the langmap option applies to characters that result from a mapping.
+" If set (default), this may break plugins (but it's backward compatible).
+set nolangremap
 
 " Jump to the last position when reopening a file
 " Load indentation rules and plugins according to the detected filetype
@@ -72,20 +76,23 @@ colorscheme molokai
 hi Normal ctermfg=250
 hi LineNr ctermfg=248
 hi CursorLine cterm=bold
-set laststatus=2
 set cursorline
 set textwidth=100
 set colorcolumn=+1 " highlight one column after 'textwidth'
 set number
-set foldmethod=syntax
-set foldlevelstart=99
+set showmatch
 set ruler
 set showcmd
-set showmatch
+set laststatus=2
 set mousehide
 set completeopt=longest,menu
 set wildmode=longest:full,full
 set wildmenu
+set foldmethod=syntax
+set foldlevelstart=99
+set display=truncate
+set splitright
+let c_comment_strings=1
 
 " tab
 set shiftwidth=4
@@ -97,6 +104,7 @@ retab " Do we really need to retab the whole file?
 " others
 set backspace=indent,eol,start
 set autoindent
+set nrformats-=octal
 set ignorecase
 set smartcase " when search terms contain capital char, then do noignorecase
 set incsearch
@@ -105,9 +113,10 @@ set autowrite
 set nobackup
 set hidden
 set history=400
-set path=.,/usr/include,/usr/local/include
+set ttimeout
+set ttimeoutlen=80
 set updatetime=1000
-set splitright
+set path=.,/usr/include,/usr/local/include
 
 " cscope
 if has("cscope")
@@ -218,6 +227,7 @@ let g:ycm_filetype_blacklist = {
     \ 'infolog' : 1,
     \ 'mail' : 1
     \}
+let g:ycm_open_loclist_on_ycm_diags = 0
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1 " Ctags needs to be called with the --fields=+l
@@ -315,6 +325,8 @@ let mapleader = "`"
 " the "Q" command starts Ex mode, but you will not need it
 map Q gq
 
+inoremap <C-U> <C-G>u<C-U>
+
 imap <C-h> <Backspace>
 imap <C-l> <Delete>
 
@@ -352,10 +364,11 @@ nmap <silent> <F5> :NERDTreeToggle<CR>
 nmap <silent> <F6> :UndotreeToggle<CR>
 nmap <silent> <F8> :TagbarToggle<CR>
 
-nmap <silent> yi :YcmCompleter GoToInclude<CR>
-nmap <silent> yd :YcmCompleter GoToDeclaration<CR>
-nmap <silent> yD :YcmCompleter GoToDefinition<CR>
-nmap <silent> yf :YcmCompleter FixIt<CR>
+nmap <silent> <leader>yi :YcmCompleter GoToInclude<CR>
+nmap <silent> <leader>yd :YcmCompleter GoToDeclaration<CR>
+nmap <silent> <leader>yD :YcmCompleter GoToDefinition<CR>
+nmap <silent> <leader>yf :YcmCompleter FixIt<CR>
+nmap <silent> <leader>yl :YcmDiags<CR>
 
 nmap <silent> gn :GitGutterNextHunk<CR>
 nmap <silent> gp :GitGutterPrevHunk<CR>
@@ -364,7 +377,6 @@ nmap <silent> gz :GitGutterUndoHunk<CR>
 nmap <silent> gP :GitGutterPreviewHunk<CR>
 
 nmap <silent> gy :echo system("~/.vim/youdao.py " . expand("<cword>"))<CR>
-nmap <silent> gc :pclose<CR>
 
 " "s" Find this C symbol
 " "g" Find this definition
@@ -383,10 +395,22 @@ nmap <silent> <Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <silent> <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <silent> <Space>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 
-nmap <silent> <Space>n :cn<CR>
-nmap <silent> <Space>p :cp<CR>
+" quickfix location and preview
+nmap <silent> <Space>n :cnext<CR>
+nmap <silent> <Space>p :cprev<CR>
 nmap <silent> <Space>o :botright copen<CR>
-nmap <silent> <Space><Space> :ccl<CR>
+nmap <silent> <Space><Space> :cclose<CR>
+
+set <M-n>=n
+set <M-p>=p
+set <M-o>=o
+set <M-i>=i
+nmap <silent> <M-n> :lnext<CR>
+nmap <silent> <M-p> :lprev<CR>
+nmap <silent> <M-o> :lopen<CR>
+nmap <silent> <M-i> :lclos<CR>
+
+nmap <silent> gc :pclose<CR>
 
 " easymotion map
 map <silent> <leader><leader>. <Plug>(easymotion-repeat)
