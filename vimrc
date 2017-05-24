@@ -44,6 +44,8 @@
 " 24) "nerdcommenter" Vim plugin for intensely orgasmic commenting,
 "     https://github.com/scrooloose/nerdcommenter.git
 " 25) "vim-easymotion" Vim motions on speed!, https://github.com/easymotion/vim-easymotion.git
+" 26) "vim-markdown" Markdown Vim Mode http://plasticboy.com/markdown-vim-mode/
+"     https://github.com/plasticboy/vim-markdown.git
 
 
 set nocompatible
