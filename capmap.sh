@@ -1,7 +1,7 @@
-#! /bin/bash
+#!/bin/bash
 # map Caps_Lock to <key> reenterable
 
-TMPFILE="$(echo ~)/.vim/.capmap.tmp"
+TMPFILE="/tmp/.capmap.tmp"
 
 (flock 9
 # capmap should not be called from remote, such as ssh login
