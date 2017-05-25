@@ -1,7 +1,7 @@
 #!/bin/bash
 # map Caps_Lock to <key> reenterable
 
-TMPFILE="/tmp/.capmap.tmp"
+TMPFILE="/tmp/.capmap$(whoami)"
 
 (flock 9
 # capmap should not be called from remote, such as ssh login
