@@ -94,6 +94,7 @@ set foldmethod=syntax
 set foldlevelstart=99
 set display=truncate
 set splitright
+set scrolloff=3
 let c_comment_strings=1
 
 " tab
