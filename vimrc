@@ -13,7 +13,8 @@
 " 6) "tagbar" a class outline viewer for vim, https://github.com/majutsushi/tagbar.git
 " 7) "undotree" the ultimate undo history visualizer for vim,
 "    https://github.com/mbbill/undotree.git
-" 8) "ctrlp" Fuzzy file, buffer, mru, tag, etc finder, https://github.com/kien/ctrlp.vim.git
+" 8) "ctrlp" Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
+"    http://ctrlpvim.github.com/ctrlp.vim, https://github.com/ctrlpvim/ctrlp.vim.git
 " 9) "vim-surround" quoting/parenthesizing made simple, https://github.com/tpope/vim-surround.git
 " 10) "delimitMate" provides automatic closing of quotes, parenthesis, brackets, etc.
 "     https://github.com/Raimondi/delimitMate.git
