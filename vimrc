@@ -343,6 +343,15 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <leader><C-x> <C-w>x
 
+set <M-j>=j
+set <M-k>=k
+nnoremap <silent> <M-j> :m .+1<CR>==
+nnoremap <silent> <M-k> :m .-2<CR>==
+inoremap <silent> <M-j> <Esc>:m .+1<CR>==gi
+inoremap <silent> <M-k> <Esc>:m .-2<CR>==gi
+vnoremap <silent> <M-j> :m '>+1<CR>gv=gv
+vnoremap <silent> <M-k> :m '<-2<CR>gv=gv
+
 nmap Y y$
 
 let g:switch_buffer_blacklist = {
