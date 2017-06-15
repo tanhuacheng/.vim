@@ -227,7 +227,6 @@ let g:ycm_filetype_blacklist = {
     \ 'tagbar' : 1,
     \ 'qf' : 1,
     \ 'notes' : 1,
-    \ 'markdown' : 1,
     \ 'unite' : 1,
     \ 'vimwiki' : 1,
     \ 'pandoc' : 1,
@@ -311,6 +310,7 @@ let g:delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
 au FileType lisp        let b:loaded_delimitMate = 1
 au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
+au FileType markdown    let b:delimitMate_nesting_quotes = ['`']
 au FileType markdown    let b:delimitMate_expand_space = 0
 
 " slimv
