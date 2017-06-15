@@ -306,7 +306,10 @@ let g:NERDDefaultAlign = 'left'
 " delimitMate
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
-let g:delimitMate_balance_matchpairs = 1
+let delimitMate_jump_expansion = 1
+au FileType lisp        let b:loaded_delimitMate = 1
+au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
+au FileType markdown    let b:delimitMate_expand_space = 0
 
 
 " iabbrevs
@@ -334,8 +337,6 @@ inoremap <C-U> <C-G>u<C-U>
 
 imap <C-h> <Backspace>
 imap <C-l> <Delete>
-
-imap <expr> <CR> pumvisible() ? "\<C-Y>" : "<Plug>delimitMateCR"
 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
