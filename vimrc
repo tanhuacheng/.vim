@@ -49,6 +49,8 @@
 "     https://github.com/plasticboy/vim-markdown.git
 " 27) "vim-better-whitespace" Better whitespace highlighting for Vim,
 "     https://github.com/ntpeters/vim-better-whitespace.git
+" 28) "slimv" Superior Lisp Interaction Mode for Vim ("SLIME for Vim"),
+"     https://github.com/kovisoft/slimv.git
 
 
 set nocompatible
@@ -310,6 +312,10 @@ let delimitMate_jump_expansion = 1
 au FileType lisp        let b:loaded_delimitMate = 1
 au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
 au FileType markdown    let b:delimitMate_expand_space = 0
+
+" slimv
+let g:slimv_repl_split = 4
+let g:paredit_electric_return = 0
 
 
 " iabbrevs
