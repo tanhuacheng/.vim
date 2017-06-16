@@ -24,13 +24,13 @@ http://tipsonubuntu.com/2016/09/13/vim-8-0-released-install-ubuntu-16-04/ for ho
     ```sh
     cd .vim && mkdir bundle && cd bundle
     git clone https://github.com/rkulla/vimogen.git
+    mkdir ~/bin
+    ln -s -f ~/.vim/bundle/vimogen/vimogen ~/bin/vimogen
     ```
 
 4. apply config files
 
     ```sh
-    mkdir ~/bin
-    ln -s -f ~/.vim/bundle/vimogen/vimogen ~/bin/vimogen
     ln -s -f ~/.vim/vimogen_repos ~/.vimogen_repos
     ln -s -f ~/.vim/ycm_extra_conf.py ~/.ycm_extra_conf.py
     ln -s -f ~/.vim/swank.lisp ~/.swank.lisp
