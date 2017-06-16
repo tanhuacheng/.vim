@@ -341,8 +341,12 @@ map Q gq
 
 inoremap <C-U> <C-G>u<C-U>
 
-imap <C-h> <Backspace>
-imap <C-l> <Delete>
+set <M-h>=h
+set <M-l>=l
+imap <expr> <M-h> "<Left>"
+imap <expr> <M-l> delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" : "<Right>"
+imap <expr> <C-h> "<Backspace>"
+imap <expr> <C-l> "<Delete>"
 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
