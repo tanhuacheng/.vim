@@ -51,6 +51,8 @@
 "     https://github.com/ntpeters/vim-better-whitespace.git
 " 28) "slimv" Superior Lisp Interaction Mode for Vim ("SLIME for Vim"),
 "     https://github.com/kovisoft/slimv.git
+" 29) "fcitx" keep and restore fcitx state when leaving/re-entering insert mode,
+"     https://github.com/lilydjwg/fcitx.vim.git
 
 
 set nocompatible
