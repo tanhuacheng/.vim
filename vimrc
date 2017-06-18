@@ -179,7 +179,7 @@ au BufEnter * call AutoRestoreWinView()
 packadd matchit
 
 " ctrlp
-let g:ctrlp_map ='<C-@><C-p>'
+let g:ctrlp_map ='<C-Space><C-p>'
 
 " nerdtree & tagbar
 let g:NERDTreeWinSize = 28
@@ -317,6 +317,7 @@ au FileType markdown    let b:delimitMate_expand_space = 0
 
 " slimv
 let g:slimv_repl_split = 4
+let g:slimv_unmap_cr = 1
 let g:paredit_electric_return = 0
 
 
@@ -333,7 +334,7 @@ iabbrev ture true
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
 au VimLeave * echo system("~/.vim/capmap.sh exit")
 nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
-nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh restart 96")<CR>
+nmap <silent> `<C-Space> :echo system("~/.vim/capmap.sh restart 96")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
