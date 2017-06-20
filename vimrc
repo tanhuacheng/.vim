@@ -123,7 +123,7 @@ set nobackup
 set hidden
 set history=400
 set ttimeout
-set ttimeoutlen=100
+set ttimeoutlen=200
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
 
@@ -179,7 +179,7 @@ au BufEnter * call AutoRestoreWinView()
 packadd matchit
 
 " ctrlp
-let g:ctrlp_map ='<C-Space><C-p>'
+let g:ctrlp_map ='<C-@><C-p>'
 
 " nerdtree & tagbar
 let g:NERDTreeWinSize = 28
@@ -334,7 +334,7 @@ iabbrev ture true
 au VimEnter * echo system("~/.vim/capmap.sh enter 96")
 au VimLeave * echo system("~/.vim/capmap.sh exit")
 nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
-nmap <silent> `<C-Space> :echo system("~/.vim/capmap.sh restart 96")<CR>
+nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh restart 96")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
