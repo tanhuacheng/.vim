@@ -123,7 +123,7 @@ set nobackup
 set hidden
 set history=400
 set ttimeout
-set ttimeoutlen=200
+set ttimeoutlen=100
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
 
