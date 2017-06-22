@@ -331,8 +331,8 @@ iabbrev ture true
 " type "Caps_Lock" or "`" then "Space" in Normal mode to toggle Caps_Lock state
 " it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
 " NOTE: this is only work for local login user(s)
-au VimEnter * echo system("~/.vim/capmap.sh enter 96")
-au VimLeave * echo system("~/.vim/capmap.sh exit")
+au VimEnter * echo system("~/.vim/capmap.sh enter 96 &")
+au VimLeave * echo system("~/.vim/capmap.sh exit &")
 nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
 nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh restart 96")<CR>
 
