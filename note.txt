@@ -1,3 +1,5 @@
+viwp 用拷贝的内容替换当前单词. "viw" 可视模式选中当前单词, "p" 粘贴
+
 {n}K 默认打开光标处关键字的 man 手册, 相当于 :!man {n} 'keyword'
 
 gi Insert text in the same position as where Insert mode was stopped last time in the current buffer
