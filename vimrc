@@ -53,6 +53,8 @@
 "     https://github.com/kovisoft/slimv.git
 " 29) "fcitx" keep and restore fcitx state when leaving/re-entering insert mode,
 "     https://github.com/lilydjwg/fcitx.vim.git
+" 30) "ack" Run your favorite search tool from Vim, with an enhanced results list,
+"     https://github.com/mileszs/ack.vim.git
 
 
 set nocompatible
@@ -319,6 +321,11 @@ au FileType markdown    let b:delimitMate_expand_space = 0
 let g:slimv_repl_split = 4
 let g:slimv_unmap_cr = 1
 let g:paredit_electric_return = 0
+
+" ack
+let g:ackprg = 'ag --vimgrep'
+let g:ack_autofold_results = 1
+cnoreabbrev ack Ack!
 
 
 " iabbrevs
