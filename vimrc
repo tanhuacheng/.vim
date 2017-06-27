@@ -83,10 +83,10 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " UI
 set t_Co=256
-let g:molokai_original = 1
-let g:rehash256 = 1
 colorscheme molokai
-hi CursorLine cterm=bold
+hi Normal       ctermfg=250
+hi CursorLine                           cterm=bold
+hi LineNr       ctermfg=239 ctermbg=235
 set cursorline
 set textwidth=100
 set colorcolumn=+1 " highlight one column after 'textwidth'
