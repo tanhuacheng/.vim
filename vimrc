@@ -83,9 +83,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " UI
 set t_Co=256
+let g:molokai_original = 1
+let g:rehash256 = 1
 colorscheme molokai
-hi Normal ctermfg=250
-hi LineNr ctermfg=248
 hi CursorLine cterm=bold
 set cursorline
 set textwidth=100
@@ -283,6 +283,8 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
+
+au VimEnter * AirlineRefresh
 
 " airline-clock
 let g:airline#extensions#clock#format = '%H:%M'
