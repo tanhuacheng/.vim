@@ -84,8 +84,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " UI
 set t_Co=256
 colorscheme molokai
-hi Normal       ctermfg=250
-hi CursorLine                           cterm=bold
+hi VertSplit                ctermbg=233 cterm=none
+hi Visual                   ctermbg=236
+hi ColorColumn              ctermbg=235
 hi LineNr       ctermfg=239 ctermbg=235
 set cursorline
 set textwidth=100
@@ -110,7 +111,6 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set smarttab
-retab " Do we really need to retab the whole file?
 
 " others
 set backspace=indent,eol,start
