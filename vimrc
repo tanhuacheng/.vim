@@ -97,6 +97,7 @@ set ruler
 set showcmd
 set laststatus=2
 set mousehide
+set mouse=a
 set completeopt=longest,menu
 set wildmode=longest:full,full
 set wildmenu
@@ -128,6 +129,7 @@ set ttimeout
 set ttimeoutlen=100
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
+set clipboard=unnamed,autoselect
 
 " cscope
 if has("cscope")
