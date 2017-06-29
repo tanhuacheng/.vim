@@ -84,7 +84,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " UI
 set t_Co=256
 colorscheme molokai
-hi VertSplit                ctermbg=233 cterm=none
 hi Visual                   ctermbg=236
 hi ColorColumn              ctermbg=235
 hi LineNr       ctermfg=239 ctermbg=235
@@ -183,6 +182,7 @@ au BufEnter * call AutoRestoreWinView()
 packadd matchit
 
 " ctrlp
+nmap <C-@> <C-Space>
 let g:ctrlp_map ='<C-Space><C-p>'
 
 " nerdtree & tagbar
@@ -263,14 +263,16 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s '
 let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = '░'
+let g:airline#extensions#tabline#left_alt_sep = ''
 
 let g:airline#extensions#ycm#enabled = 1
 
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '﹥'
-let g:airline_right_sep = '◂'
-let g:airline_right_alt_sep = 'ᚲ'
+if !has('gui_running')
+    let g:airline_left_sep = '▶'
+    let g:airline_left_alt_sep = '﹥'
+    let g:airline_right_sep = '◂'
+    let g:airline_right_alt_sep = 'ᚲ'
+endif
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -338,20 +340,14 @@ iabbrev ture true
 
 " maps
 
-map  <Nul> <C-Space>
-imap <Nul> <C-Space>
+" not "'" but "`"
+let mapleader = "`"
 
 " use "Caps_Lock" key as "`", ascii character "`" is 96
-" type "Caps_Lock" or "`" then "Space" in Normal mode to toggle Caps_Lock state
-" it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
-" NOTE: this is only work for local login user(s)
-au VimEnter * echo system("~/.vim/capmap.sh enter 96 &")
-au VimLeave * echo system("~/.vim/capmap.sh exit &")
-nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
-nmap <silent> `<C-Space> :echo system("~/.vim/capmap.sh restart 96")<CR>
-
-" "`" is not "'"
-let mapleader = "`"
+au VimEnter * call system("~/.vim/capmap.sh enter 96 &")
+au VimLeave * call system("~/.vim/capmap.sh exit &")
+nmap <silent> <leader><Space> :call system("~/.vim/capmap.sh toggle &")<CR>
+nmap <silent> <leader><C-@> :call system("~/.vim/capmap.sh restart 96 &")<CR>
 
 " the "Q" command starts Ex mode, but you will not need it
 map Q gq
