@@ -183,7 +183,7 @@ au BufEnter * call AutoRestoreWinView()
 packadd matchit
 
 " ctrlp
-let g:ctrlp_map ='<C-@><C-p>'
+let g:ctrlp_map ='<C-Space><C-p>'
 
 " nerdtree & tagbar
 let g:NERDTreeWinSize = 28
@@ -338,6 +338,9 @@ iabbrev ture true
 
 " maps
 
+map  <Nul> <C-Space>
+imap <Nul> <C-Space>
+
 " use "Caps_Lock" key as "`", ascii character "`" is 96
 " type "Caps_Lock" or "`" then "Space" in Normal mode to toggle Caps_Lock state
 " it is useful to set "`" as "mapleader", in other word, use "Caps_Lock" as "leader"
@@ -345,7 +348,7 @@ iabbrev ture true
 au VimEnter * echo system("~/.vim/capmap.sh enter 96 &")
 au VimLeave * echo system("~/.vim/capmap.sh exit &")
 nmap <silent> `<Space> :echo system("~/.vim/capmap.sh toggle")<CR>
-nmap <silent> `<C-@> :echo system("~/.vim/capmap.sh restart 96")<CR>
+nmap <silent> `<C-Space> :echo system("~/.vim/capmap.sh restart 96")<CR>
 
 " "`" is not "'"
 let mapleader = "`"
