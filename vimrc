@@ -343,9 +343,9 @@ iabbrev ture true
 " not "'" but "`"
 let mapleader = "`"
 
-" use "Caps_Lock" key as "`", ascii character "`" is 96
+" use "Caps_Lock" key as "`"(ascii code is 96)
 au VimEnter * call system("~/.vim/capmap.sh enter 96 &")
-au VimLeave * call system("~/.vim/capmap.sh exit &")
+au VimLeave * call system("~/.vim/capmap.sh exit")
 nmap <silent> <leader><Space> :call system("~/.vim/capmap.sh toggle &")<CR>
 nmap <silent> <leader><C-@> :call system("~/.vim/capmap.sh restart 96 &")<CR>
 
