@@ -55,6 +55,8 @@
 "     https://github.com/lilydjwg/fcitx.vim.git
 " 30) "ack" Run your favorite search tool from Vim, with an enhanced results list,
 "     https://github.com/mileszs/ack.vim.git
+" 31) "vim-airline-themes" A collection of themes for vim-airline,
+"     https://github.com/vim-airline/vim-airline-themes.git
 
 
 set nocompatible
@@ -82,6 +84,11 @@ set nolangremap
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " UI
+set termguicolors
+if &term =~# '^screen'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 set t_Co=256
 colorscheme molokai
 hi Visual                   ctermbg=236
@@ -104,7 +111,7 @@ set foldmethod=syntax
 set foldlevelstart=99
 set display=truncate
 set splitright
-let c_comment_strings=1
+let c_comment_strings = 1
 
 " tab
 set shiftwidth=4
@@ -123,12 +130,14 @@ set hlsearch
 set autowrite
 set nobackup
 set hidden
-set history=400
+set history=1000
+set undodir=~/.vim/.undodir
+set undofile
 set ttimeout
-set ttimeoutlen=100
+set ttimeoutlen=120
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
-set clipboard=unnamed,autoselect
+set clipboard=unnamedplus,autoselect
 
 " cscope
 if has("cscope")
@@ -205,6 +214,7 @@ else
 endif
 
 " nerdtree
+let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 if (s:nerdtree_open && !&diff)
     au vimenter * NERDTree | wincmd p
@@ -214,6 +224,7 @@ au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree
 " tagbar
 let g:tagbar_zoomwidth = 0
 let g:tagbar_sort = 0
+let g:tagbar_compact = 1
 let g:tagbar_foldlevel = 1
 let g:tagbar_iconchars = ['▸', '▾']
 if (s:tagbar_open && !&diff)
@@ -222,7 +233,7 @@ endif
 
 " undotree
 let g:undotree_WindowLayout = 2
-let g:undotree_SplitWidth = 20
+let g:undotree_SplitWidth = 26
 let g:undotree_DiffAutoOpen = 0
 let g:undotree_HighlightChangedText = 0
 
@@ -247,7 +258,7 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 
 " ultisnips
@@ -257,7 +268,8 @@ let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " airline
-let g:airline_theme = 'dark'
+let g:airline_theme =
+    \ (has('gui_running') || &termguicolors == 1) ? 'molokai' : 'distinguished'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -295,9 +307,9 @@ let g:airline#extensions#clock#format = '%H:%M'
 let g:airline#extensions#clock#updatetime = 2147483647
 
 " indent-guides
-if !has('gui_running')
+if !has('gui_running') && &termguicolors != 1
     let g:indent_guides_auto_colors = 0
-    hi IndentGuidesOdd  ctermbg=235
+    hi IndentGuidesOdd  ctermbg=236
     hi IndentGuidesEven ctermbg=235
 endif
 let g:indent_guides_guide_size = 1

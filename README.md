@@ -16,7 +16,7 @@ http://tipsonubuntu.com/2016/09/13/vim-8-0-released-install-ubuntu-16-04/ for ho
 
     ```sh
     sudo apt install git exuberant-ctags cscope silversearcher-ag xdotool build-essential cmake \
-    python python-dev python3 python3-dev
+    python python-dev python3 python3-dev wmctrl
     ```
 
 3. install vimogen
@@ -32,7 +32,6 @@ http://tipsonubuntu.com/2016/09/13/vim-8-0-released-install-ubuntu-16-04/ for ho
 
     ```sh
     ln -s -f ~/.vim/vimogen_repos ~/.vimogen_repos
-    ln -s -f ~/.vim/ycm_extra_conf.py ~/.ycm_extra_conf.py
     ln -s -f ~/.vim/swank.lisp ~/.swank.lisp
     ```
 
