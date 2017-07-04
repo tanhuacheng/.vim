@@ -342,7 +342,7 @@ let g:paredit_electric_return = 0
 
 " ack
 let g:ackprg = 'ag --vimgrep'
-let g:ack_autofold_results = 1
+" let g:ack_autofold_results = 1
 cnoreabbrev ack Ack!
 
 
