@@ -134,7 +134,7 @@ set history=1000
 set undodir=~/.vim/.undodir
 set undofile
 set ttimeout
-set ttimeoutlen=120
+set ttimeoutlen=400
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
 set clipboard=unnamedplus,autoselect
@@ -352,6 +352,12 @@ iabbrev ture true
 
 " maps
 
+function s:term_map_alt_key(key)
+    if !has('gui_running')
+        exec "set <M-" . a:key . ">=\e]{0}" . a:key . "~"
+    endif
+endfunction
+
 " not "'" but "`"
 let mapleader = "`"
 
@@ -366,8 +372,8 @@ map Q gq
 
 inoremap <C-U> <C-G>u<C-U>
 
-set <M-h>=h
-set <M-l>=l
+call s:term_map_alt_key('h')
+call s:term_map_alt_key('l')
 imap <expr> <M-h> "<Left>"
 imap <expr> <M-l> delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" : "<Right>"
 imap <expr> <C-h> "<Backspace>"
@@ -379,8 +385,8 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <leader><C-x> <C-w>x
 
-set <M-j>=j
-set <M-k>=k
+call s:term_map_alt_key('j')
+call s:term_map_alt_key('k')
 nnoremap <silent> <M-j> :m .+1<CR>==
 nnoremap <silent> <M-k> :m .-2<CR>==
 inoremap <silent> <M-j> <Esc>:m .+1<CR>==gi
@@ -451,10 +457,10 @@ nmap <silent> <Space>p :cprev<CR>
 nmap <silent> <Space>o :botright copen<CR>
 nmap <silent> <Space><Space> :cclose<CR>
 
-set <M-n>=n
-set <M-p>=p
-set <M-o>=o
-set <M-i>=i
+call s:term_map_alt_key('n')
+call s:term_map_alt_key('p')
+call s:term_map_alt_key('o')
+call s:term_map_alt_key('i')
 nmap <silent> <M-n> :lnext<CR>
 nmap <silent> <M-p> :lprev<CR>
 nmap <silent> <M-o> :lopen<CR>
