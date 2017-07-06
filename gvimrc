@@ -13,7 +13,7 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-set guifont=YaHei\ Consolas\ Hybrid\ 11
+set guifont=YaHei\ Consolas\ Hybrid\ Powerline\ 12
 
 set winaltkeys=no
 
