@@ -268,8 +268,7 @@ let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " airline
-let g:airline_theme =
-    \ (has('gui_running') || &termguicolors == 1) ? 'molokai' : 'distinguished'
+let g:airline_theme = 'distinguished'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
