@@ -1,3 +1,5 @@
 bundle
-.capmap.tmp
-*%*
+.undodir/*%*
+.*.swp
+.*.swn
+.*.swo

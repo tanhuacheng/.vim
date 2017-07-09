@@ -221,6 +221,22 @@ if (s:nerdtree_open && !&diff)
 endif
 au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" nerdtree-git-plugin
+let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ 'Modified'  : 'ο',
+    \ 'Staged'    : '●',
+    \ 'Untracked' : '□',
+    \ 'Renamed'   : '»',
+    \ 'Unmerged'  : '⑂',
+    \ 'Deleted'   : '–',
+    \ 'Dirty'     : 'ѳ',
+    \ 'Clean'     : '≡',
+    \ 'Ignored'   : 'х',
+    \ 'Unknown'   : '?',
+    \ }
+au VimEnter * hi NERDTreeGitStatusIgnored ctermbg=bg guibg=bg
+
 " tagbar
 let g:tagbar_zoomwidth = 0
 let g:tagbar_sort = 0
