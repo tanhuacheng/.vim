@@ -206,8 +206,8 @@ nmap <C-@> <C-Space>
 let g:ctrlp_map ='<C-Space><C-p>'
 
 " nerdtree & tagbar
-let g:NERDTreeWinSize = 28
-let g:tagbar_width = 32
+let g:NERDTreeWinSize = 31
+let g:tagbar_width = 40
 
 let s:win_reserved = 7
 let s:nerdtree_open = 0
@@ -260,7 +260,7 @@ endif
 
 " undotree
 let g:undotree_WindowLayout = 2
-let g:undotree_SplitWidth = 26
+let g:undotree_SplitWidth = 29
 let g:undotree_DiffAutoOpen = 0
 let g:undotree_HighlightChangedText = 0
 
