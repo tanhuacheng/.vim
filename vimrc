@@ -89,11 +89,22 @@ if &term =~# '^screen'
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
+
 set t_Co=256
 colorscheme molokai
-hi Visual                   ctermbg=236
-hi ColorColumn              ctermbg=235
-hi LineNr       ctermfg=239 ctermbg=235
+
+hi Visual                           ctermbg=236
+hi ColorColumn                      ctermbg=235
+hi LineNr           ctermfg=239     ctermbg=235
+
+if !has('gui_running') && &termguicolors
+    hi Error        guifg=#FFAFFF   guibg=#8F005F
+    hi SpellBad                     guibg=#5F0000
+    hi SpellCap                     guibg=#00005F
+    hi SpellLocal                   guibg=#00005F
+    hi SpellRare                                    cterm=reverse
+endif
+
 set cursorline
 set textwidth=100
 set colorcolumn=+1 " highlight one column after 'textwidth'
