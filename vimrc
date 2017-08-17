@@ -359,6 +359,9 @@ au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
 au FileType markdown    let b:delimitMate_nesting_quotes = ['`']
 au FileType markdown    let b:delimitMate_expand_space = 0
 
+"
+let g:better_whitespace_filetypes_blacklist = ['']
+
 " slimv
 let g:slimv_repl_split = 4
 let g:slimv_unmap_cr = 1
@@ -367,6 +370,9 @@ let g:paredit_electric_return = 0
 " ack
 let g:ackprg = 'ag --vimgrep'
 " let g:ack_autofold_results = 1
+
+
+cnoreabbrev terminal+ terminal++curwin
 cnoreabbrev ack Ack!
 
 
