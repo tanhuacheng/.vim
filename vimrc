@@ -130,7 +130,7 @@ set ttimeout
 set ttimeoutlen=400
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
-set clipboard=unnamedplus,autoselect
+" set clipboard=unnamedplus,autoselect
 
 " cscope
 if has("cscope")
