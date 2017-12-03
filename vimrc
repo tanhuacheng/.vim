@@ -57,6 +57,8 @@
 "     https://github.com/mileszs/ack.vim.git
 " 31) "vim-airline-themes" A collection of themes for vim-airline,
 "     https://github.com/vim-airline/vim-airline-themes.git
+" 32) "rfc-syntax" Simple syntax highlight for RFC file,
+"     https://github.com/vim-scripts/rfc-syntax.git
 
 
 set nocompatible
@@ -169,6 +171,8 @@ endif
 " avoid the annoyed highlight for c99 compound literal: foo(&(char){0}), the '{' is highlighted red
 " TODO: the following au should be delete if anyone find a ideal solution
 au BufRead,BufNewFile *.c set filetype=cpp
+
+au BufRead,BufNewFile *.rfc set filetype=rfc
 
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
