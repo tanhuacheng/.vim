@@ -172,7 +172,7 @@ endif
 " TODO: the following au should be delete if anyone find a ideal solution
 au BufRead,BufNewFile *.c set filetype=cpp
 
-au BufRead,BufNewFile *.rfc set filetype=rfc
+au BufRead,BufNewFile *.rfc set filetype=rfc textwidth=72
 
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
@@ -258,6 +258,27 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 let g:tagbar_foldlevel = 1
 let g:tagbar_iconchars = ['▸', '▾']
+
+function! GetTagbarType(type)
+    return {
+    \ 'ctagstype': a:type,
+    \ 'ctagsbin': '$HOME/.vim/to_ctags.py',
+    \ 'ctagsargs': '-f -' . ' -t ' . a:type . ' --sort=yes',
+    \ 'kinds': [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro': '|',
+    \ 'kind2scope': {
+        \ 's': 'section',
+    \ },
+    \ 'sort': 0,
+    \ }
+endfunction
+
+let g:tagbar_type_markdown = GetTagbarType('markdown')
+let g:tagbar_type_rfc = GetTagbarType('rfc')
+
 if (s:tagbar_open && !&diff)
     au VimEnter * nested :call tagbar#autoopen(0)
 endif
@@ -343,7 +364,7 @@ endif
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar', 'markdown']
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar', 'markdown', 'rfc']
 
 " signature
 let g:SignatureMarkTextHLDynamic = 1
@@ -363,8 +384,8 @@ au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
 au FileType markdown    let b:delimitMate_nesting_quotes = ['`']
 au FileType markdown    let b:delimitMate_expand_space = 0
 
-"
-let g:better_whitespace_filetypes_blacklist = ['']
+" better-whitespace
+let g:better_whitespace_filetypes_blacklist = ['', 'rfc']
 
 " slimv
 let g:slimv_repl_split = 4
