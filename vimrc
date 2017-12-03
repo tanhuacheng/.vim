@@ -172,7 +172,7 @@ endif
 " TODO: the following au should be delete if anyone find a ideal solution
 au BufRead,BufNewFile *.c set filetype=cpp
 
-au BufRead,BufNewFile *.rfc set filetype=rfc textwidth=72
+au BufRead,BufNewFile *.rfc set filetype=rfc
 
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
