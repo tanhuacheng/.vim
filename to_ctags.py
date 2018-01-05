@@ -203,7 +203,7 @@ def findSectionsMarkdown(filename, lines):
     return sections
 
 
-rfcHeadingRe = re.compile(r'^[0-9]+((?:\.[0-9]+)*)\.? (\S+(?: \S+)*)$')
+rfcHeadingRe = re.compile(r'^[0-9]+((?:\.[0-9]+)*)\.? +(\S+(?: +\S+)*)$')
 
 
 def findSectionsRFC(filename, lines):
