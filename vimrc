@@ -527,9 +527,9 @@ nmap <silent> gc :pclose<CR>
 map <silent> <leader><leader>. <Plug>(easymotion-repeat)
 
 function! BothSidesInsert(str)
-    exe "norm! a" . a:str
-    exe "norm! hi" . a:str
-    exe "norm! l"
+    exec "norm! \"0ciw" . a:str
+    exec "norm! \"0p"
+    exec "norm! a" . a:str
 endfunc
 nmap <silent> <Space>a :call BothSidesInsert(' ')<CR>
 
