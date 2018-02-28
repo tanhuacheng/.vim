@@ -526,6 +526,13 @@ nmap <silent> gc :pclose<CR>
 " easymotion map
 map <silent> <leader><leader>. <Plug>(easymotion-repeat)
 
+function! BothSidesInsert(str)
+    exe "norm! a" . a:str
+    exe "norm! hi" . a:str
+    exe "norm! l"
+endfunc
+nmap <silent> <Space>a :call BothSidesInsert(' ')<CR>
+
 
 " Source a private configuration file if available
 if filereadable(".vimrc.private")
