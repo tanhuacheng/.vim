@@ -353,7 +353,7 @@ au VimEnter * AirlineRefresh
 
 " airline-clock
 let g:airline#extensions#clock#format = '%H:%M'
-let g:airline#extensions#clock#updatetime = 2147483647
+let g:airline#extensions#clock#updatetime = 1000
 
 " indent-guides
 if !has('gui_running') && &termguicolors != 1
