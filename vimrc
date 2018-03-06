@@ -203,7 +203,9 @@ au BufEnter * call AutoRestoreWinView()
 " plugins
 
 packadd matchit
+
 packadd termdebug
+let g:termdebug_wide = 1
 
 " ctrlp
 nmap <C-@> <C-Space>
