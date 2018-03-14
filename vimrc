@@ -421,10 +421,10 @@ endfunction
 let mapleader = "`"
 
 " use "Caps_Lock" key as "`"(ascii code is 96)
-au VimEnter * call system("~/.vim/capmap.sh enter 96 &")
-au VimLeave * call system("~/.vim/capmap.sh exit")
-nmap <silent> <leader><Space> :call system("~/.vim/capmap.sh toggle &")<CR>
-nmap <silent> <leader><C-@> :call system("~/.vim/capmap.sh restart 96 &")<CR>
+au VimEnter * call job_start([expand('$HOME').'/.vim/capmap.sh', 'enter', '96'])
+au VimLeavePre * call system("~/.vim/capmap.sh exit")
+nmap <silent> <leader><Space> :call job_start([expand('$HOME').'/.vim/capmap.sh', 'toggle'])<CR>
+nmap <silent> <leader><C-@> :call job_start([expand('$HOME').'/.vim/capmap.sh', 'restart', '96'])<CR>
 
 " the "Q" command starts Ex mode, but you will not need it
 map Q gq
