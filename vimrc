@@ -85,6 +85,8 @@ set nolangremap
 " Load indentation rules and plugins according to the detected filetype
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+au QuitPre * exe "wincmd p"
+
 " UI
 set termguicolors
 if &term =~# '^screen'
@@ -489,7 +491,8 @@ nmap <silent> gs :GitGutterStageHunk<CR>
 nmap <silent> gz :GitGutterUndoHunk<CR>
 nmap <silent> gP :GitGutterPreviewHunk<CR>
 
-nmap <silent> gy :echo system("~/.vim/youdao.py " . expand("<cword>"))<CR>
+nmap <silent> gy :bo call
+    \ term_start([expand('$HOME').'/.vim/youdao.py', expand('<cword>')], {'term_rows': '10'})<CR>
 
 " "s" Find this C symbol
 " "g" Find this definition
