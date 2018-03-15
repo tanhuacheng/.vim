@@ -85,8 +85,6 @@ set nolangremap
 " Load indentation rules and plugins according to the detected filetype
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-au QuitPre * exe "wincmd p"
-
 " UI
 set termguicolors
 if &term =~# '^screen'
@@ -427,7 +425,7 @@ nmap <silent> <leader><Space> :call job_start([expand('$HOME').'/.vim/capmap.sh'
 nmap <silent> <leader><C-@> :call job_start([expand('$HOME').'/.vim/capmap.sh', 'restart', '96'])<CR>
 
 " the "Q" command starts Ex mode, but you will not need it
-map Q gq
+nmap Q :q<CR>
 
 inoremap <C-U> <C-G>u<C-U>
 
@@ -491,8 +489,27 @@ nmap <silent> gs :GitGutterStageHunk<CR>
 nmap <silent> gz :GitGutterUndoHunk<CR>
 nmap <silent> gP :GitGutterPreviewHunk<CR>
 
+au QuitPre * if expand('%') =~# '\v^!\/home\/.+\/\.vim\/youdao\.py.*' | exe "wincmd p" | endif
+
+function OnYoudaoExited(job, status)
+    let l:buffer_name = expand('%')
+
+    99 wincmd j
+    sleep 20m
+
+    if expand('%') =~# '\v^!\/home\/.+\/\.vim\/youdao\.py.*'
+        set nonumber
+        exe "normal! gg"
+    endif
+
+    if expand('%') !=# l:buffer_name
+        wincmd p
+    endif
+endfunction
+
 nmap <silent> gy :bo call
-    \ term_start([expand('$HOME').'/.vim/youdao.py', expand('<cword>')], {'term_rows': '10'})<CR>
+    \ term_start([expand('$HOME').'/.vim/youdao.py', expand('<cword>')],
+               \ {'term_rows': '10', 'exit_cb': 'OnYoudaoExited'})<CR>
 
 " "s" Find this C symbol
 " "g" Find this definition
