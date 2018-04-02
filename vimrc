@@ -255,7 +255,7 @@ let g:NERDTreeIndicatorMapCustom = {
 au VimEnter * hi NERDTreeGitStatusIgnored ctermbg=bg guibg=bg
 
 " tagbar
-let g:tagbar_zoomwidth = 0
+let g:tagbar_zoomwidth = 50
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 let g:tagbar_foldlevel = 1
