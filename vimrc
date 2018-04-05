@@ -49,15 +49,13 @@
 "     https://github.com/plasticboy/vim-markdown.git
 " 27) "vim-better-whitespace" Better whitespace highlighting for Vim,
 "     https://github.com/ntpeters/vim-better-whitespace.git
-" 28) "slimv" Superior Lisp Interaction Mode for Vim ("SLIME for Vim"),
-"     https://github.com/kovisoft/slimv.git
-" 29) "fcitx" keep and restore fcitx state when leaving/re-entering insert mode,
+" 28) "fcitx" keep and restore fcitx state when leaving/re-entering insert mode,
 "     https://github.com/lilydjwg/fcitx.vim.git
-" 30) "ack" Run your favorite search tool from Vim, with an enhanced results list,
+" 29) "ack" Run your favorite search tool from Vim, with an enhanced results list,
 "     https://github.com/mileszs/ack.vim.git
-" 31) "vim-airline-themes" A collection of themes for vim-airline,
+" 30) "vim-airline-themes" A collection of themes for vim-airline,
 "     https://github.com/vim-airline/vim-airline-themes.git
-" 32) "rfc-syntax" Simple syntax highlight for RFC file,
+" 31) "rfc-syntax" Simple syntax highlight for RFC file,
 "     https://github.com/vim-scripts/rfc-syntax.git
 
 
@@ -381,18 +379,12 @@ let g:NERDDefaultAlign = 'left'
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let delimitMate_jump_expansion = 1
-au FileType lisp        let b:loaded_delimitMate = 1
 au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
 au FileType markdown    let b:delimitMate_nesting_quotes = ['`']
 au FileType markdown    let b:delimitMate_expand_space = 0
 
 " better-whitespace
 let g:better_whitespace_filetypes_blacklist = ['', 'rfc']
-
-" slimv
-let g:slimv_repl_split = 4
-let g:slimv_unmap_cr = 1
-let g:paredit_electric_return = 0
 
 " ack
 let g:ackprg = 'ag --vimgrep'
