@@ -75,6 +75,10 @@ language message zh_CN.UTF-8
 set termencoding=utf-8 " If appears messy code, change this to your terminal encoding
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
 
+" file
+set fileformats=unix,dos,mac
+set fileformat=unix
+
 " Prevent that the langmap option applies to characters that result from a mapping.
 " If set (default), this may break plugins (but it's backward compatible).
 set nolangremap
@@ -138,6 +142,7 @@ set ignorecase
 set smartcase " when search terms contain capital char, then do noignorecase
 set incsearch
 set hlsearch
+set autoread
 set autowrite
 set nobackup
 set hidden
@@ -149,6 +154,7 @@ set ttimeoutlen=400
 set updatetime=1000
 set path=.,/usr/include,/usr/local/include
 set clipboard=unnamedplus,autoselect
+let g:is_posix = 1
 
 " cscope
 if has("cscope")
