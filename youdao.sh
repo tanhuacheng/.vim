@@ -6,5 +6,5 @@
 
 text="$(xsel -o)"
 if [ -n "$text" ]; then
-    notify-send "$text" "$(youdao.py $text)"
+    notify-send "$text" "$(youdao.py "$text")"
 fi
