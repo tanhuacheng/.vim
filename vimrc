@@ -57,6 +57,8 @@
 "     https://github.com/vim-airline/vim-airline-themes.git
 " 31) "rfc-syntax" Simple syntax highlight for RFC file,
 "     https://github.com/vim-scripts/rfc-syntax.git
+" 32) "vim-cpp-enhanced-highlight" Additional Vim syntax highlighting for C++ (including C++11/14),
+"     https://github.com/octol/vim-cpp-enhanced-highlight.git
 
 
 set nocompatible
@@ -126,7 +128,9 @@ set foldmethod=syntax
 set foldlevelstart=99
 set display=truncate
 set splitright
+
 let c_comment_strings = 1
+let c_no_curly_error=1
 
 " tab
 set shiftwidth=4
@@ -171,11 +175,6 @@ if has("cscope")
     set cscopeverbose               " show msg when any other cscope db added
     set csqf=s-,d-,c-,t-,e-,i-      " use quickfix window to show cscope results
 endif
-
-" set filetype c to cpp
-" avoid the annoyed highlight for c99 compound literal: foo(&(char){0}), the '{' is highlighted red
-" TODO: the following au should be delete if anyone find a ideal solution
-au BufRead,BufNewFile *.c set filetype=cpp
 
 au BufRead,BufNewFile *.rfc set filetype=rfc
 
