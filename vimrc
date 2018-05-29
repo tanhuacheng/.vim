@@ -59,6 +59,7 @@
 "     https://github.com/vim-scripts/rfc-syntax.git
 " 32) "vim-cpp-enhanced-highlight" Additional Vim syntax highlighting for C++ (including C++11/14),
 "     https://github.com/octol/vim-cpp-enhanced-highlight.git
+" 33) "gitv" gitk for Vim, https://github.com/gregsexton/gitv.git
 
 
 set nocompatible
