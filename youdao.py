@@ -72,7 +72,7 @@ def translate_print (r):
 
 def translate ():
     arguments = docopt(__doc__)
-    key_word = arguments['<key_word>'].strip(' \t\r\n,.')
+    key_word = arguments['<key_word>'].strip(' \t\r\n,.:;')
     if not key_word:
         print('无效的关键字')
         return
