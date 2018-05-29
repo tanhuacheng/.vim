@@ -62,6 +62,7 @@
 " 33) "gitv" gitk for Vim, https://github.com/gregsexton/gitv.git
 
 
+runtime! debian.vim
 set nocompatible
 
 " pathogen
