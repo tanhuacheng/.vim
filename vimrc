@@ -392,7 +392,7 @@ au FileType markdown    let b:delimitMate_nesting_quotes = ['`']
 au FileType markdown    let b:delimitMate_expand_space = 0
 
 " better-whitespace
-let g:better_whitespace_filetypes_blacklist = ['', 'rfc']
+let g:better_whitespace_filetypes_blacklist = ['', 'rfc', 'git']
 
 " ack
 let g:ackprg = 'ag --vimgrep'
