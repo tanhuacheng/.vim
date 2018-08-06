@@ -116,7 +116,7 @@ endif
 set cursorline
 set textwidth=100
 set colorcolumn=+1 " highlight one column after 'textwidth'
-set number
+set nonumber
 set showmatch
 set ruler
 set showcmd
