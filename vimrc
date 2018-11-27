@@ -163,6 +163,10 @@ set path=.,/usr/include,/usr/local/include
 set clipboard=unnamedplus,autoselect
 let g:is_posix = 1
 
+if &diff
+    set diffopt+=iwhite
+endif
+
 " cscope
 if has("cscope")
     set cscopetag                   " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
