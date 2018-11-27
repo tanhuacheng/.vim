@@ -229,18 +229,19 @@ let s:win_reserved = 7
 let s:nerdtree_open = 0
 let s:tagbar_open = 0
 
-if ((&textwidth + s:win_reserved + g:NERDTreeWinSize + 1) <= winwidth(0))
-    let s:nerdtree_open = 1
-    if ((&textwidth + s:win_reserved + g:NERDTreeWinSize + 1 + g:tagbar_width + 1) <= winwidth(0))
-        let s:tagbar_open = 1
+if ((&textwidth + s:win_reserved + g:tagbar_width + 1) <= winwidth(0))
+    let s:tagbar_open = 1
+    if ((&textwidth + s:win_reserved + g:tagbar_width + 1 + g:NERDTreeWinSize + 1) <= winwidth(0))
+        let s:nerdtree_open = 1
     endif
 else
-    if ((&textwidth + s:win_reserved + g:tagbar_width + 1) <= winwidth(0))
-        let s:tagbar_open = 1
+    if ((&textwidth + s:win_reserved + g:NERDTreeWinSize + 1) <= winwidth(0))
+        let s:nerdtree_open = 1
     endif
 endif
 
 " nerdtree
+let g:NERDTreeWinPos = 'right'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 if (s:nerdtree_open && !&diff)
@@ -265,6 +266,7 @@ let g:NERDTreeIndicatorMapCustom = {
 au VimEnter * hi NERDTreeGitStatusIgnored ctermbg=bg guibg=bg
 
 " tagbar
+let g:tagbar_left = 1
 let g:tagbar_zoomwidth = 50
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
@@ -477,9 +479,9 @@ nmap <silent> <C-p> :call SwitchBuffer(1)<CR>
 nmap <silent> <C-F12> :echo "'ctags --fields=+l -R .' " . system("ctags --fields=+l -R .")<CR>
 nmap <silent> <S-F12> :echo "'cscope -Rbq' " . system("cscope -Rbq")<CR>
 
-nmap <silent> <F5> :NERDTreeToggle<CR>
+nmap <silent> <F5> :TagbarToggle<CR>
 nmap <silent> <F6> :UndotreeToggle<CR>
-nmap <silent> <F8> :TagbarToggle<CR>
+nmap <silent> <F8> :NERDTreeToggle<CR>
 
 nmap <silent> <leader>yi :YcmCompleter GoToInclude<CR>
 nmap <silent> <leader>yd :YcmCompleter GoToDeclaration<CR>
