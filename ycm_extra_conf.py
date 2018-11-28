@@ -25,6 +25,8 @@ flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
+'-Wno-unused-parameter',
+'-Wno-unused-variable',
 '-fexceptions',
 '-UNDEBUG',
 '-D_GNU_SOURCE',
