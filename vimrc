@@ -388,6 +388,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_c = 1
 
 " delimitMate
 let g:delimitMate_expand_cr = 1
@@ -459,10 +460,16 @@ vnoremap <silent> <M-k> :m '<-2<CR>gv=gv
 
 nmap Y y$
 
+
+au FileType qf,diff,nerdtree,undotree set nobuflisted
+
 let g:switch_buffer_blacklist = {
+    \ 'qf'       : 1,
+    \ 'diff'     : 1,
     \ 'nerdtree' : 1,
     \ 'undotree' : 1,
     \}
+
 function! SwitchBuffer(dir)
     if (get(g:switch_buffer_blacklist, &filetype))
         return
@@ -473,8 +480,10 @@ function! SwitchBuffer(dir)
         bp
     endif
 endfunc
+
 nmap <silent> <C-n> :call SwitchBuffer(0)<CR>
 nmap <silent> <C-p> :call SwitchBuffer(1)<CR>
+
 
 nmap <silent> <C-F12> :echo "'ctags --fields=+l -R .' " . system("ctags --fields=+l -R .")<CR>
 nmap <silent> <S-F12> :echo "'cscope -Rbq' " . system("cscope -Rbq")<CR>
