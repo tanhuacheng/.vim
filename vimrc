@@ -60,6 +60,7 @@
 " 32) "vim-cpp-enhanced-highlight" Additional Vim syntax highlighting for C++ (including C++11/14),
 "     https://github.com/octol/vim-cpp-enhanced-highlight.git
 " 33) "gitv" gitk for Vim, https://github.com/gregsexton/gitv.git
+" 34) "rust.vim" Vim configuration for Rust, https://github.com/rust-lang/rust.vim.git
 
 
 runtime! debian.vim
