@@ -394,7 +394,6 @@ let g:NERDAltDelims_c = 1
 " delimitMate
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
-let delimitMate_jump_expansion = 1
 au FileType python      let b:delimitMate_nesting_quotes = ['"', "'"]
 au FileType markdown    let b:delimitMate_nesting_quotes = ['`']
 au FileType markdown    let b:delimitMate_expand_space = 0
