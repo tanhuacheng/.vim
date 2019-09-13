@@ -184,6 +184,7 @@ if has("cscope")
 endif
 
 au BufRead,BufNewFile *.rfc set filetype=rfc
+au BufRead,BufNewFile *.rs set matchpairs=(:),{:},[:]
 
 " Save current view settings on a per-window, per-buffer basis.
 function! AutoSaveWinView()
