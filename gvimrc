@@ -1,10 +1,8 @@
-" Gvim configuration file
+" GVim 配置文件
 "
-" Author: tanhuacheng
-"  Email: tanhc.gz@gmail.com
-"
+" 作者: 谭化成
+" 邮箱: tanhc.gz@gmail.com
 
-set gcr=a:block-blinkon0
 
 set guioptions-=l
 set guioptions-=L
@@ -13,9 +11,10 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-set guifont=YaHei\ Consolas\ Hybrid\ Powerline\ 12
+set guifont=Monospace\ Regular\ 11
+
 
 set winaltkeys=no
 
-map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen &")<CR>
-nmap <silent> <leader><C-Space> :call system("~/.vim/capmap.sh restart 96 &")<CR>
+
+noremap <silent> <f11> :call system('wmctrl -ir ' . v:windowid . ' -b toggle,fullscreen &')<cr>

@@ -1,5 +1,13 @@
-bundle
-.undodir/*%*
+/.undodir/*%*
+/pack/tanhc/
+
+__pycache__/
+
 .*.swp
 .*.swn
 .*.swo
+
+tags
+cscope.*out
+
+/.netrwhist

@@ -1,60 +1,33 @@
-Get Start
-====================================================================================================
+## 开始(基于 Ubuntu 18.04)
 
-1. upgrade to **VIM8**
 
-    http://tipsonubuntu.com/2016/09/13/vim-8-0-released-install-ubuntu-16-04/
+* 使用较新版本的 **Vim**
 
-2. pull the latest development tree from my git repository
-
-    ```sh
-    cd && rm -rf .vim
-    git clone https://github.com/tanhuacheng/.vim.git
+    ``` sh
+    sudo add-apt-repository ppa:jonathonf/vim
+    sudo apt install vim-gtk3
     ```
 
-3. install dependence software
+* 安装依赖
 
     ```sh
-    sudo apt install git exuberant-ctags cscope silversearcher-ag xdotool build-essential cmake \
-    python python-dev python3 python3-dev wmctrl
+    sudo apt install exuberant-ctags cscope silversearcher-ag xdotool python3-pip curl
+
+    curl -sL install-node.now.sh/lts | sudo bash
     ```
 
-4. install vimogen
+* 安装和更新插件
 
     ```sh
-    cd .vim && mkdir bundle && cd bundle
-    git clone https://github.com/rkulla/vimogen.git
-    mkdir ~/bin
-    ln -s -f ~/.vim/bundle/vimogen/vimogen ~/bin/vimogen
+    bin/sync.py
     ```
 
-5. apply config files
+* 安装 c, c++, oc 等语言的 **Language server** - [ccls](https://github.com/MaskRay/ccls/wiki/Build)
 
-    ```sh
-    ln -s -f ~/.vim/vimogen_repos ~/.vimogen_repos
-    ```
-    If use **konsole**, cat default.keytab to ~/.local/share/konsole/default.keytab. otherwise you
-    may need to modify the behavior of function `term_map_alt_key` in vimrc, or change your terminal
-    keymap.
+* 其它
 
-    ```sh
-    cat ~/.vim/default.keytab >> ~/.local/share/konsole/default.keytab
-    ```
+    * 为了更好地显示一些字符, 把 **GNOME Terminal** 的字体设置为 `Monospace Regular 11`
 
-6. install plugins
+    * 为了使设置 `langmenu` 生效, 注释掉 `/etc/vim/vimrc` 中 `syntax` 和 `filetype` 相关的设置
 
-    ```sh
-    vimogen # choose 1
-    ```
-
-7. install YouCompleteMe
-
-    ```sh
-    cd ~/.vim/bundle/YouCompleteMe
-    git submodule update --init --recursive
-    ./install.py --clang-completer
-   ```
-
-8. upgrade gdb to latest version for **Termdebug**
-
-    https://www.gnu.org/software/gdb/
+    * **Termdebug** 需要更新版本的 [gdb](https://www.gnu.org/software/gdb/)

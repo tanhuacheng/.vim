@@ -1,0 +1,60 @@
+{
+    "packname": "tanhc",
+
+    "directories": [
+        {
+            "dirname": "start",
+
+            "plugins": [
+                "tomasr/molokai",
+                "morhetz/gruvbox",
+
+                "vim-airline/vim-airline",
+                "enricobacis/vim-airline-clock",
+                "vim-airline/vim-airline-themes",
+
+                "tanhuacheng/tagbar",
+                "scrooloose/nerdtree",
+                "Xuyuanp/nerdtree-git-plugin",
+                "mbbill/undotree",
+                "ctrlpvim/ctrlp.vim",
+
+                "nathanaelkane/vim-indent-guides",
+                "airblade/vim-gitgutter",
+                "kshenoy/vim-signature",
+                "ntpeters/vim-better-whitespace",
+
+                "easymotion/vim-easymotion",
+                "mileszs/ack.vim",
+                "vim-scripts/a.vim",
+
+                "tpope/vim-repeat",
+                "tpope/vim-surround",
+                "Raimondi/delimitMate",
+                "vim-scripts/VisIncr",
+                "godlygeek/tabular",
+                "scrooloose/nerdcommenter",
+                "honza/vim-snippets",
+                { "giturl": "neoclide/coc.nvim",
+                  "branch": "release" },
+
+                "tpope/vim-fugitive",
+                "mikewadsten/vim-gitwildignore",
+
+                "plasticboy/vim-markdown",
+                "vim-scripts/rfc-syntax",
+                "octol/vim-cpp-enhanced-highlight",
+                "rust-lang/rust.vim",
+
+                "lilydjwg/fcitx.vim"
+            ]
+        },
+
+        {
+            "dirname": "opt",
+
+            "plugins": [
+            ]
+        }
+    ]
+}
