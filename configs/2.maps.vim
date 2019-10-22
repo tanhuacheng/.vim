@@ -217,7 +217,7 @@ nmap <silent> <leader>jd <Plug>(coc-definition)
 nmap <silent> <leader>jr <Plug>(coc-references)
 nmap <silent> <leader>jf <Plug>(coc-fix-current)
 
-nmap <silent> <leader>rr <Plug>(coc-refactor)
+nmap <silent> <leader>rr <Plug>(coc-rename)
 " }}}
 
 
