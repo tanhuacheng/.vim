@@ -26,7 +26,7 @@
 
 * 其它
 
-    * 为了更好地显示一些字符, 把 **GNOME Terminal** 的字体设置为 `Monospace Regular 11`
+    * 设置 **GNOME Terminal**. *字体*: `Inconsolata Medium 12`, *Cell spacing*: `1.15 x width`
 
     * 为了使设置 `langmenu` 生效, 注释掉 `/etc/vim/vimrc` 中 `syntax` 和 `filetype` 相关的设置
 

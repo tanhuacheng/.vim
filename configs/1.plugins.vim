@@ -172,7 +172,7 @@ let g:ackhighlight = 1
 " let g:loaded_delimitMate = 1
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
-let g:delimitMate_balance_matchpairs = 1
+" let g:delimitMate_balance_matchpairs = 1
 
 au FileType rust     let b:delimitMate_matchpairs = '(:),{:},[:]'
 au FileType python   let b:delimitMate_nesting_quotes = ['"', "'"]

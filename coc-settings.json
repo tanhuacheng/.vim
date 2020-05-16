@@ -2,8 +2,6 @@
     "suggest.snippetIndicator": "◢",
     "suggest.minTriggerInputLength": 2,
 
-    "diagnostic.checkCurrentLine": true,
-
     "python.jediEnabled": false,
 
     "languageserver": {

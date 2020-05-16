@@ -147,6 +147,7 @@ set csqf=s-,d-,c-,t-,e-,i-      " use quickfix window to show cscope results
 
 
 au BufRead,BufNewFile *.rfc set filetype=rfc
+au BufRead,BufNewFile *.h set filetype=c
 
 au FileType qf,diff,git set nobuflisted
 

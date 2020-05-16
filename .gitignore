@@ -11,3 +11,4 @@ tags
 cscope.*out
 
 /.netrwhist
+/view/
