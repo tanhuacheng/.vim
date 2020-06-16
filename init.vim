@@ -1,30 +1,14 @@
-" Vim 配置文件
+" Neovim 配置文件
 "
 " 作者: 谭化成
-" 邮箱: tanhc.gz@gmail.com
+" 邮箱: huacheng.tan@foxmail.com
 
 
-let g:cfg_root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let g:cfg_root = stdpath('config')
 
 
-set nocompatible
-
-
-" langmenu 选项必须在 syntax 和 filetype 打开前设置. Vim 可能在本文件前 source 其它配置文件, 须确保
-" 它们没有在这些配置文件中(例如: /etc/vim/vimrc)被打开过
-set langmenu=zh_cn.utf-8
-language message zh_CN.UTF-8
-
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
 set fileformat=unix
 set fileformats=unix,dos,mac
-
-
-syntax on
-filetype plugin indent on
 
 
 set termguicolors
@@ -34,16 +18,11 @@ if &term =~# '^screen'
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-set nonumber
+
 set cursorline
 set textwidth=100
 set colorcolumn=+1
 
-set display=truncate
-
-set laststatus=2
-set ruler
-set showcmd
 set showmatch
 
 set foldmethod=syntax
@@ -53,7 +32,6 @@ set splitright
 set noequalalways
 
 set mouse=a
-set mousehide
 
 set diffopt+=iwhite
 
@@ -64,42 +42,29 @@ set updatetime=200
 set lazyredraw
 
 
-set ttimeout
-set ttimeoutlen=20
-
 set tabstop=4
 set expandtab
-set smarttab
 set shiftwidth=4
 set shiftround
 
 set autoindent
-set backspace=indent,eol,start
 
-set completeopt=longest,menu
-set wildmenu
+set completeopt=longest,menuone
 set wildmode=longest:full,full
 
-set clipboard=unnamedplus,autoselect
-
-set nrformats-=octal
+set clipboard=unnamedplus
 
 set ignorecase
 set smartcase
-set incsearch
-set hlsearch
 
-set autoread
 set autowrite
-set nobackup
 set hidden
 
 set history=200
 
-exe 'set' 'undodir=' . g:cfg_root . '/.undodir'
 set undofile
 
-set path=.,/usr/include,/usr/local/include
+set path=.,/usr/local/include,/usr/include
 
 
 " 打开时光标跳转到文件最后关闭时的位置
@@ -147,7 +112,7 @@ set csqf=s-,d-,c-,t-,e-,i-      " use quickfix window to show cscope results
 
 
 au BufRead,BufNewFile *.rfc set filetype=rfc
-au BufRead,BufNewFile *.h set filetype=c
+au BufRead,BufNewFile *.h   set filetype=c
 
 au FileType qf,diff,git set nobuflisted
 

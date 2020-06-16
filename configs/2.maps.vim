@@ -1,33 +1,24 @@
-" Vim 配置文件 - 映射
+" Neovim 配置文件 - 映射
 "
 " 作者: 谭化成
-" 邮箱: tanhc.gz@gmail.com
-
-
-" Fix meta-keys {{{
-let c = 'a'
-while c <= 'z'
-    exe 'set <m-' . c . ">=\e" . c
-    let c = nr2char(char2nr(c) + 1)
-endw
-" }}}
+" 邮箱: huacheng.tan@foxmail.com
 
 
 " mapleader {{{
 let mapleader = '`' " 开单引号, ASCII 码: 96
 
 " 把 '大写锁定键(Caps Lock)' 映射到 '开单引号(`)'. 在所有 Vim 窗口退出前, '大写锁定键' 将不可用
-au VimEnter * call job_start([g:cfg_root . '/bin/capmap.sh', 'enter', '96'])
-au VimLeave * call system(g:cfg_root . '/bin/capmap.sh exit')
+au VimEnter * call jobstart([g:cfg_root . '/bin/capmap.sh', 'enter', '96'])
+au VimLeave * call jobstart(g:cfg_root . '/bin/capmap.sh exit', {'detach': 1})
 
 " 切换大小写
 nnoremap <silent> <leader><space>
-            \ :call job_start([g:cfg_root . '/bin/capmap.sh', 'toggle'])<cr>
+            \ :call jobstart([g:cfg_root . '/bin/capmap.sh', 'toggle'])<cr>
 
 " 当映射失效时, 重新开始映射
 nmap <leader><nul> <leader><c-space>
 nnoremap <silent> <leader><c-space>
-            \ :call job_start([g:cfg_root . '/bin/capmap.sh', 'restart', '96'])<cr>
+            \ :call jobstart([g:cfg_root . '/bin/capmap.sh', 'restart', '96'])<cr>
 " }}}
 
 
@@ -122,27 +113,90 @@ nnoremap <silent> <space>ci :cs find i <c-r>=expand('<cfile>')<cr><cr>
 " }}}
 
 
-" 翻译光标处或选中的文本 {{{
-let s:youdao_term_name = '__youdao__'
-
-func OnYoudaoExit(timer_id)
-    if expand('%') == s:youdao_term_name
-        exe 'normal! gg'
+" 翻译选中的或光标处的文本 {{{
+func! s:youdao_close_floatwin()
+    if exists('s:youdao_winid')
+        call nvim_win_close(s:youdao_winid, v:true)
+        unlet s:youdao_winid
     endif
 endf
 
+func! s:youdao_on_stdout(id, data, name)
+    call s:youdao_close_floatwin()
+
+    let buf = nvim_create_buf(v:false, v:true)
+
+    call nvim_buf_set_lines(buf, 0, -1, v:false, a:data)
+
+    call nvim_buf_set_name(buf, '__youdao__')
+    call nvim_buf_set_option(buf, 'buftype',   'nofile')
+    call nvim_buf_set_option(buf, 'bufhidden', 'delete')
+    call nvim_buf_set_option(buf, 'swapfile',  v:false)
+    call nvim_buf_set_option(buf, 'modifiable', v:false)
+
+    let height = min([len(a:data), &previewheight])
+    let width  = max(map(copy(a:data), 'strdisplaywidth(v:val)'))
+
+    let s:youdao_winid = nvim_open_win(buf, v:false, {
+        \ 'relative': 'cursor',
+        \ 'row': 1,
+        \ 'col': 0,
+        \ 'height': height,
+        \ 'width': width,
+        \ 'style': 'minimal'
+        \ })
+
+    autocmd CursorMoved <buffer> ++once call s:youdao_close_floatwin()
+endf
+
 func YoudaoTranslate(sentence)
-    belowright call term_start([g:cfg_root . '/bin/youdao.py', a:sentence], {
-                \ 'term_name': s:youdao_term_name,
-                \ 'term_rows': '10',
-                \ 'exit_cb': { -> timer_start(20, 'OnYoudaoExit') },
-                \ })
+    if bufname() == '__youdao__'
+        q
+    endif
+
+    let sentence = trim(a:sentence)
+
+    if sentence == ''
+        let sentence = trim(input('YOUDAO: 请输入需要翻译的内容> '))
+    endif
+
+    if sentence == ''
+        echo "\rYOUDAO: 已取消"
+        return
+    else
+        echo "\rYOUDAO: 翻译中 ... [".sentence."]"
+    endif
+
+    call jobstart([g:cfg_root . '/bin/youdao.py', sentence], {
+        \ 'on_stdout': function('s:youdao_on_stdout'),
+        \ 'stdout_buffered': v:true
+        \ })
+endf
+
+" https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
+func! s:youdao_get_visual_selection()
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+
+    return join(map(lines, 'trim(v:val)'), ' ')
+endf
+
+func YoudaoTranslateVisual()
+    call YoudaoTranslate(s:youdao_get_visual_selection())
 endf
 
 nnoremap <silent> gy :call YoudaoTranslate(expand('<cword>'))<cr>
-vnoremap <silent> gy :<c-u>call YoudaoTranslate(@*)<cr>
+vnoremap <silent> gy :<c-u>call YoudaoTranslateVisual()<cr>
 
-au TerminalOpen __youdao__ setlocal noswapfile nobuflisted textwidth=0 winfixheight
+autocmd BufLeave __youdao__ if exists('s:youdao_winid') | unlet s:youdao_winid | endif
 " }}}
 
 

@@ -1,11 +1,7 @@
-" Vim 配置文件 - 插件
+" Neovim 配置文件 - 插件
 "
 " 作者: 谭化成
-" 邮箱: tanhc.gz@gmail.com
-"
-
-
-packadd matchit
+" 邮箱: huacheng.tan@foxmail.com
 
 
 " molokai {{{
@@ -73,7 +69,7 @@ function! GetTagbarType(type)
 endfunction
 
 let g:tagbar_type_markdown = GetTagbarType('markdown')
-let g:tagbar_type_rfc = GetTagbarType('rfc')
+let g:tagbar_type_rfc      = GetTagbarType('rfc')
 
 if ((&textwidth + s:win_reserved + g:tagbar_width + 1) <= winwidth(0) && !&diff)
     au VimEnter * nested :call tagbar#autoopen(0)
@@ -137,11 +133,6 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'tagbar', 'markdown
 " }}}
 
 
-" gitgutter {{{
-let g:gitgutter_preview_win_floating = 1
-" }}}
-
-
 " signature {{{
 let g:SignatureMarkTextHLDynamic = 1
 let g:SignatureMarkerTextHLDynamic = 1
@@ -155,7 +146,7 @@ func CheckBetterWhitespace()
     if &readonly || !&modifiable | exe 'DisableWhitespace' | else | exe 'EnableWhitespace' | endif
 endf
 
-au WinEnter,BufWinEnter,TerminalOpen * call CheckBetterWhitespace()
+au WinEnter,BufWinEnter,TermEnter * call CheckBetterWhitespace()
 au VimEnter * ++once au OptionSet readonly,modifiable call CheckBetterWhitespace()
 " }}}
 
