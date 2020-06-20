@@ -114,9 +114,13 @@ nnoremap <silent> <space>ci :cs find i <c-r>=expand('<cfile>')<cr><cr>
 
 
 " 翻译选中的或光标处的文本 {{{
+let s:youdao_bufname = '__youdao__'
+
 func! s:youdao_close_floatwin()
     if exists('s:youdao_winid')
-        call nvim_win_close(s:youdao_winid, v:true)
+        if nvim_win_is_valid(s:youdao_winid)
+            call nvim_win_close(s:youdao_winid, v:true)
+        endif
         unlet s:youdao_winid
     endif
 endf
@@ -128,7 +132,7 @@ func! s:youdao_on_stdout(id, data, name)
 
     call nvim_buf_set_lines(buf, 0, -1, v:false, a:data)
 
-    call nvim_buf_set_name(buf, '__youdao__')
+    call nvim_buf_set_name(buf, s:youdao_bufname)
     call nvim_buf_set_option(buf, 'buftype',   'nofile')
     call nvim_buf_set_option(buf, 'bufhidden', 'delete')
     call nvim_buf_set_option(buf, 'swapfile',  v:false)
@@ -150,7 +154,7 @@ func! s:youdao_on_stdout(id, data, name)
 endf
 
 func YoudaoTranslate(sentence)
-    if bufname() == '__youdao__'
+    if bufname() == s:youdao_bufname
         q
     endif
 
@@ -196,8 +200,6 @@ endf
 
 nnoremap <silent> gy :call YoudaoTranslate(expand('<cword>'))<cr>
 vnoremap <silent> gy :<c-u>call YoudaoTranslateVisual()<cr>
-
-autocmd BufLeave __youdao__ if exists('s:youdao_winid') | unlet s:youdao_winid | endif
 " }}}
 
 
