@@ -44,9 +44,7 @@
                 "plasticboy/vim-markdown",
                 "vim-scripts/rfc-syntax",
                 "octol/vim-cpp-enhanced-highlight",
-                "rust-lang/rust.vim",
-
-                "lilydjwg/fcitx.vim"
+                "rust-lang/rust.vim"
             ]
         },
 

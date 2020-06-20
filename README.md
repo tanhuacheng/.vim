@@ -1,22 +1,79 @@
-## 开始(基于 Ubuntu 18.04)
+说明（基于 *Ubuntu 20.04*）
+====================================================================================================
 
+### 同步插件
 
-* 安装依赖
+```sh
+bin/sync.py
+```
+
+### 安装依赖
+
+* *bin/capmap.sh*
+
+  ```sh
+  sudo apt install xdotool
+  ```
+
+* **ctags** & **cscope**
+
+  ```sh
+  sudo apt install exuberant-ctags cscope
+  ```
+
+* **vim-airline**
+
+  ```sh
+  sudo apt install powerline
+  ```
+
+* **ack.vim**
+
+  ```sh
+  sudo apt install silversearcher-ag
+  ```
+
+* **coc.nvim**
+
+  ```sh
+  sudo apt install curl
+  curl -sL install-node.now.sh/lts | sudo bash
+  ```
+
+  * ccls - C/C++/Objective-C language server
 
     ```sh
-    sudo apt install exuberant-ctags cscope silversearcher-ag xdotool python3-pip curl
-
-    curl -sL install-node.now.sh/lts | sudo bash
+    sudo apt install ccls
     ```
 
-* 安装和更新插件
+* **provider-clipboard**
 
-    ```sh
-    bin/sync.py
-    ```
+  ```sh
+  sudo apt install xsel
+  ```
 
-* 安装 c, c++, oc 等语言的 **Language server** - [ccls](https://github.com/MaskRay/ccls/wiki/Build)
+* **provider-python**
 
-* 其它
+  ```sh
+  sudo apt install python3-pip
+  python3 -m pip install --user --upgrade pynvim
+  ```
 
-    * 设置 **GNOME Terminal**. *字体*: `Inconsolata Medium 12`, *Cell spacing*: `1.15 x width`
+* **provider-nodejs**
+
+  ```sh
+  sudo npm install -g neovim
+  ```
+
+### 其它
+
+* 安装字体
+
+  ```sh
+  sudo apt install fonts-inconsolata
+  ```
+
+* 设置 **Terminal**::**Preferences**::**Profile**::**Text**
+
+  * **Custom font**: `Inconsolata Medium 12`
+  * **Cell spacing**::**x width**: `1.15`
