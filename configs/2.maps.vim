@@ -158,6 +158,7 @@ func YoudaoTranslate(sentence)
 
     if sentence == ''
         let sentence = trim(input('YOUDAO: 请输入需要翻译的内容> '))
+        redraw
     endif
 
     if sentence == ''
