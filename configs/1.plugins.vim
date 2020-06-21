@@ -68,8 +68,7 @@ function! GetTagbarType(type)
     \ }
 endfunction
 
-let g:tagbar_type_markdown = GetTagbarType('markdown')
-let g:tagbar_type_rfc      = GetTagbarType('rfc')
+let g:tagbar_type_rfc = GetTagbarType('rfc')
 
 if ((&textwidth + s:win_reserved + g:tagbar_width + 1) <= winwidth(0) && !&diff)
     au VimEnter * nested :call tagbar#autoopen(0)

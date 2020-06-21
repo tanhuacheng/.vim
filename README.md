@@ -18,7 +18,7 @@ bin/sync.py
 * **ctags** & **cscope**
 
   ```sh
-  sudo apt install exuberant-ctags cscope
+  sudo apt install universal-ctags cscope
   ```
 
 * **vim-airline**
