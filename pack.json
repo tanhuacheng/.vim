@@ -13,7 +13,7 @@
                 "enricobacis/vim-airline-clock",
                 "vim-airline/vim-airline-themes",
 
-                "tanhuacheng/tagbar",
+                "majutsushi/tagbar",
                 "scrooloose/nerdtree",
                 "Xuyuanp/nerdtree-git-plugin",
                 "mbbill/undotree",
