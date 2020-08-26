@@ -91,7 +91,7 @@ au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree
 " nerdtree-git-plugin {{{
 " 设置了 NERDTreeRespectWildIgnore, 且使用了 wildignore 插件, 忽略了的文件不会在 nerdtree 中列出
 " let g:NERDTreeShowIgnoredStatus = 1 " a heavy feature may cost much more time
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : '✹',
     \ "Staged"    : '✚',
     \ "Untracked" : '✭',
