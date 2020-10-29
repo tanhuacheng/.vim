@@ -178,6 +178,9 @@ let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_c = 1
+let g:NERDCustomDelimiters = {
+    \ 'openscad': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }
+    \ }
 " }}}
 
 

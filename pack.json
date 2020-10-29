@@ -41,6 +41,7 @@
                 "tpope/vim-fugitive",
                 "mikewadsten/vim-gitwildignore",
 
+                "sirtaj/vim-openscad",
                 "plasticboy/vim-markdown",
                 "vim-scripts/rfc-syntax",
                 "octol/vim-cpp-enhanced-highlight",
