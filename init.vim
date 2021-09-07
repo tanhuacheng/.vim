@@ -7,6 +7,9 @@
 let g:cfg_root = stdpath('config')
 
 
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
+
 set fileformat=unix
 set fileformats=unix,dos,mac
 
