@@ -38,6 +38,7 @@ bin/sync.py
   ```sh
   sudo apt install curl
   curl -sL install-node.now.sh/lts | sudo bash
+  npm config set registry https://registry.npm.taobao.org
   ```
 
   * ccls - C/C++/Objective-C language server
@@ -51,6 +52,7 @@ bin/sync.py
   ```sh
   sudo apt install xsel
   ```
+  ssh: lemonade
 
 * **provider-python**
 
