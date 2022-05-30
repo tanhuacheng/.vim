@@ -42,49 +42,15 @@ let g:airline#extensions#clock#updatetime = 1000
 " }}}
 
 
-" tagbar {{{
-let s:win_reserved = 7      " space for number and sign
-
-let g:tagbar_left = 1
-let g:tagbar_width = 34
-let g:tagbar_zoomwidth = 1
-let g:tagbar_sort = 0
-let g:tagbar_compact = 1
-let g:tagbar_foldlevel = 1
-
-function! GetTagbarType(type)
-    return {
-    \ 'ctagstype': a:type,
-    \ 'ctagsbin': g:cfg_root . '/bin/to_ctags.py',
-    \ 'ctagsargs': '-f -' . ' -t ' . a:type . ' --sort=yes',
-    \ 'kinds': [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro': '|',
-    \ 'kind2scope': {
-        \ 's': 'section',
-    \ },
-    \ 'sort': 0,
-    \ }
-endfunction
-
-let g:tagbar_type_rfc = GetTagbarType('rfc')
-
-if ((&textwidth + s:win_reserved + g:tagbar_width + 1) <= winwidth(0) && !&diff)
-    au VimEnter * nested :call tagbar#autoopen(0)
-endif
-" }}}
-
-
 " nerdtree {{{
 " let g:loaded_nerd_tree = 1
 let g:NERDTreeRespectWildIgnore = 1
-let g:NERDTreeWinPos = 'right'
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinPos = 'left'
+let g:NERDTreeWinSize = 25
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 
+au vimenter * NERDTree | wincmd p
 au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }}}
 
@@ -115,6 +81,35 @@ let g:undotree_ShortIndicators = 1
 let g:undotree_HelpLine = 0
 
 au WinEnter undotree_* vertical resize 24
+" }}}
+
+
+" tagbar {{{
+let g:tagbar_left = 0
+let g:tagbar_width = 25
+let g:tagbar_zoomwidth = 1
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+let g:tagbar_foldlevel = 1
+
+function! GetTagbarType(type)
+    return {
+    \ 'ctagstype': a:type,
+    \ 'ctagsbin': g:cfg_root . '/bin/to_ctags.py',
+    \ 'ctagsargs': '-f -' . ' -t ' . a:type . ' --sort=yes',
+    \ 'kinds': [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro': '|',
+    \ 'kind2scope': {
+        \ 's': 'section',
+    \ },
+    \ 'sort': 0,
+    \ }
+endfunction
+
+let g:tagbar_type_rfc = GetTagbarType('rfc')
 " }}}
 
 
@@ -197,8 +192,7 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-vimlsp',
             \ 'coc-json',
-            \ 'coc-python',
-            \ 'coc-rls',
+            \ 'coc-pyright',
             \ ]
 " }}}
 

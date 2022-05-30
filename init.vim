@@ -23,7 +23,7 @@ endif
 
 
 set cursorline
-set textwidth=100
+set textwidth=78
 set colorcolumn=+1
 
 set showmatch

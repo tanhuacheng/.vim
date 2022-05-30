@@ -25,7 +25,7 @@ nnoremap <silent> <leader><c-space>
 " 修改一些不常用的默认功能 {{{
 nnoremap Y y$
 nnoremap U <c-r>
-nnoremap <silent> Q :q<cr>
+nnoremap <silent> Q :wqa<cr>
 " }}}
 
 
@@ -207,9 +207,9 @@ vnoremap <silent> gy :<c-u>call YoudaoTranslateVisual()<cr>
 nmap <c-n> <Plug>AirlineSelectNextTab
 nmap <c-p> <Plug>AirlineSelectPrevTab
 
-nnoremap <silent> <f5> :TagbarToggle<cr>
+nnoremap <silent> <f5> :NERDTreeToggle<cr>
 nnoremap <silent> <f6> :UndotreeToggle<cr>
-nnoremap <silent> <f8> :NERDTreeToggle<cr>
+nnoremap <silent> <f8> :TagbarToggle<cr>
 
 let g:ctrlp_map = '<m-m>'
 " }}}
