@@ -125,7 +125,23 @@ func! s:youdao_close_floatwin()
     endif
 endf
 
-func! s:youdao_on_stdout(id, data, name)
+func! s:youdao_on_output(id, data, name)
+    if a:id <= 0
+        echo "\rYOUDAO: 错误(".string(a:id).")"
+        return
+    endif
+
+    if a:name == 'stderr'
+        if a:data[0] != ''
+            echo "\rYOUDAO: ".a:data[0]
+        endif
+        return
+    endif
+
+    if a:data[0] == ''
+        return
+    endif
+
     call s:youdao_close_floatwin()
 
     let buf = nvim_create_buf(v:false, v:true)
@@ -173,8 +189,10 @@ func YoudaoTranslate(sentence)
     endif
 
     call jobstart([g:cfg_root . '/bin/youdao.py', sentence], {
-        \ 'on_stdout': function('s:youdao_on_stdout'),
-        \ 'stdout_buffered': v:true
+        \ 'on_stdout': function('s:youdao_on_output'),
+        \ 'on_stderr': function('s:youdao_on_output'),
+        \ 'stdout_buffered': v:true,
+        \ 'stderr_buffered': v:true,
         \ })
 endf
 
