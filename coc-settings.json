@@ -1,7 +1,10 @@
 {
-    "suggest.snippetIndicator": "→",
+    // "suggest.snippetIndicator": "→",
+    "suggest.noselect": true,
 
-    "python.pythonPath": "/usr/bin/python3",
+    "pyright.disableProgressNotifications": true,
+    "pyright.inlayHints.enable": false,
+    // "pyright.disableDiagnostics": true,
 
     "languageserver": {
         "ccls": {

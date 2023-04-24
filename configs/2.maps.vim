@@ -36,10 +36,10 @@ imap <c-b> <left>
 inoremap <m-f> <c-o>e<right>
 inoremap <m-b> <c-o>b
 
-imap <c-n> <down>
-imap <c-p> <up>
+" imap <c-n> <down> " see coc
+" imap <c-p> <up>   " see coc
 
-imap <c-e> <end>
+" imap <c-e> <end>  # see coc
 imap <c-a> <home>
 
 imap <c-d> <del>
@@ -278,10 +278,15 @@ nnoremap <leader>fi :Ack!<space>
 " <c-j>     : snippet 的下一个位置
 " <c-k>     : snippet 的上一个位置
 
+inoremap <silent><expr> <c-n> coc#pum#visible() ? coc#pum#next(1) : "\<down>"
+inoremap <silent><expr> <c-p> coc#pum#visible() ? coc#pum#prev(1) : "\<up>"
+inoremap <silent><expr> <c-e> coc#pum#visible() ? coc#pum#cancel() : "\<end>"
+
+inoremap <silent><expr> <tab> coc#pum#visible() ?
+    \ coc#_select_confirm() : "\<tab>"
+
 imap <nul> <c-space>
 inoremap <silent><expr> <c-space> coc#refresh()
-
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<tab>"
 
 nmap <silent> <leader>jj <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>kk <Plug>(coc-diagnostic-prev)

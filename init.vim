@@ -6,6 +6,7 @@
 
 let g:cfg_root = stdpath('config')
 
+let g:python3_host_prog = '$HOME/pynvim/bin/python'
 
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,default,latin1
