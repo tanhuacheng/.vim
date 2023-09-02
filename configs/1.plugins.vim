@@ -3,6 +3,9 @@
 " 作者: 谭化成
 " 邮箱: huacheng.tan@foxmail.com
 
+" suda {{{
+let g:suda_smart_edit = 1
+" }}}
 
 " molokai {{{
 " let g:molokai_original = 1
@@ -50,8 +53,14 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 
-au vimenter * NERDTree | wincmd p
-au bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+au vimenter *
+    \ if &diff == 0
+    \ | NERDTree | wincmd p
+    \ | endif
+au bufenter *
+    \ if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+    \ | q
+    \ | endif
 " }}}
 
 

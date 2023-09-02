@@ -1,10 +1,10 @@
 {
-    // "suggest.snippetIndicator": "→",
     "suggest.noselect": true,
 
+    // https://github.com/microsoft/pyright/blob/main/docs/configuration.md
     "pyright.disableProgressNotifications": true,
-    "pyright.inlayHints.enable": false,
-    // "pyright.disableDiagnostics": true,
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.functionReturnTypes": false,
 
     "languageserver": {
         "ccls": {

@@ -6,6 +6,7 @@
             "dirname": "start",
 
             "plugins": [
+                "lambdalisue/suda.vim",
                 "tomasr/molokai",
                 "morhetz/gruvbox",
 
@@ -20,7 +21,8 @@
                 "ctrlpvim/ctrlp.vim",
 
                 "nathanaelkane/vim-indent-guides",
-                "airblade/vim-gitgutter",
+                { "giturl": "airblade/vim-gitgutter",
+                  "branch": "main" },
                 "kshenoy/vim-signature",
                 "ntpeters/vim-better-whitespace",
 

@@ -1,86 +1,83 @@
 #!/usr/bin/python3
 # -*- coding:utf-8
-
-
 """\
 有道翻译
 
 Usage:
-    youdao.py [sentence]\
+    youdao.py [query]\
 """
 
-__author__ = 'tanhuacheng'
-
-
 import sys
+import time
+import hashlib
 import requests
 
 
-def translate_print(r):
-    if not('errorCode' in r):
+def translate_print(r: dict):
+    if 'errorCode' not in r:
         print('[未知错误]', file=sys.stderr)
-        sys.exit(2)
+        sys.exit(3)
+    if (error := r['errorCode']) != '0':
+        print(f'[翻译错误: {error}]', file=sys.stderr)
+        sys.exit(3)
 
-    error = r['errorCode']
-    if error:
-        errorCode = {20: '文本过长', 30: '无法翻译', 40: '不支持的语言', 50: '无效的 key'}
-        if error in errorCode:
-            print(errorCode[error].join('[]'), file=sys.stderr)
-        else:
-            print('[未知错误]', file=sys.stderr)
-        sys.exit(2)
-
-    if not('query' in r):
-        print('[未知错误]', file=sys.stderr)
-        sys.exit(2)
-
-    if not(('basic' in r) and ('web' in r)):
-        if not('translation' in r):
-            print('[未知错误]', file=sys.stderr)
-            sys.exit(2)
-
-        print(r['query'] + ':')
-        print('\n' + '; '.join(r['translation']))
-        sys.exit()
-
-    print(r['query'], end = ':')
-    if 'basic' in r:
-        if 'uk-phonetic' in r['basic']:
-            if 'us-phonetic' in r['basic']:
-                print(' ' + ' '.join(['英', '[{}]'.format(r['basic']['uk-phonetic']),
-                                      '美', '[{}]'.format(r['basic']['us-phonetic'])]))
-            else:
-                print(' ' + '[{}]'.format(r['basic']['uk-phonetic']))
-        elif 'us-phonetic' in r['basic']:
-            print(' ' + '[{}]'.format(r['basic']['us-phonetic']))
-        elif 'phonetic' in r['basic']:
-            print(' ' + '[{}]'.format(r['basic']['phonetic']))
-        else:
-            print()
-
-        if 'explains' in r['basic']:
-            print('\n' + '\n'.join(r['basic']['explains']))
+    # query
+    print(r[key][0] if (key := 'returnPhrase') in r else r['query'], end=':')
+    if 'basic' in r and 'phonetic' in r['basic']:
+        print(f' [{r["basic"]["phonetic"]}]')
     else:
         print()
 
+    # translation
+    print('\n'.join(r['translation']))
+
+    # basic
+    if 'basic' in r:
+        print()
+        if wfs := r['basic'].get('wfs'):
+            wfs_str = []
+            for wf in wfs:
+                wf = wf['wf']
+                wfs_str.append(f'{wf["name"]}: {wf["value"]}')
+            print('; '.join(wfs_str))
+            print()
+        print('\n'.join(r['basic']['explains']))
+
+    # web
     if 'web' in r:
         print()
         for d in r['web']:
             print(d['key'] + ': ' + '; '.join(d['value']))
 
-def translate(sentence):
-    url = ''.join(['http://fanyi.youdao.com/openapi.do?',
-                   'keyfrom=tanhuacheng&',
-                   'key=927344506&',
-                   'type=data&',
-                   'doctype=json&',
-                   'version=1.1&',
-                   'q={}'.format(sentence)])
+def translate(q):
+    url    = 'https://openapi.youdao.com/api'
+    appKey = '4a04dca27b6f86ae'
+    appSec = 'ieZHB7a5NHoTcGWOJrlHMs5nFgoCe7xy'
+    salt   = 'cbedf8a7-2c2a-3a13-ab92-9f5a0b7ac042'
+
+    curtime = str(round(time.time()))
+    input_q = q if len(q) <= 20 else f'{q[:10]}{len(q)}{q[-10:]}'
+    sign    = bytes(appKey + input_q + salt + curtime + appSec, 'utf-8')
+    sign    = hashlib.sha256(sign).hexdigest()
 
     try:
-        req = requests.get(url, verify=False, timeout=10)
+        req = requests.post(url, timeout=8, data={
+            'q': q,
+            'from': 'auto',
+            'to': 'auto',
+            'appKey': appKey,
+            'salt': salt,
+            'sign': sign,
+            'signType': 'v3',
+            'curtime': curtime,
+            'strict': 'false',
+        })
     except:
         print('[连接错误]', file=sys.stderr)
+        sys.exit(2)
+
+    if req.status_code != requests.codes.ok:
+        print(f'[请求错误: {req.status_code}]', file=sys.stderr)
         sys.exit(2)
 
     translate_print(req.json())
@@ -89,23 +86,35 @@ def translate(sentence):
 if __name__ == '__main__':
     import readline
 
-    sentence = ''
+    import string
+    punctuation = string.punctuation
+    try:
+        import zhon
+        punctuation += zhon.hanzi.punctuation
+    except:
+        pass
+
+    q = ''
 
     argc = len(sys.argv)
     if argc == 2:
-        sentence = sys.argv[1]
+        q = sys.argv[1]
     elif argc != 1:
         print(__doc__, file=sys.stderr)
         sys.exit(1)
 
     while True:
-        sentence = sentence.strip(' \t\r\n,.:;')
-        if sentence:
+        q = q.strip(string.whitespace + punctuation)
+        if q:
             break
+        if argc == 2:
+            print('[无效输入]', file=sys.stderr)
+            sys.exit(1)
 
         try:
-            sentence = input('请输入> ')
+            q = input('[youdao]❯ ')
         except:
-            sys.exit()
+            print()
+            sys.exit(1)
 
-    translate(sentence)
+    translate(q)
